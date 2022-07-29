@@ -15,18 +15,6 @@ namespace Grid_Lock___Option_3
         public Form1()
         {
             InitializeComponent();
-            LblBoo.Visible = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LblBoo.Visible=true;
-
-        }
-
-        private void LblBoo_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
