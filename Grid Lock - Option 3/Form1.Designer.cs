@@ -43,6 +43,8 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.cbColour = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.gbControler = new System.Windows.Forms.GroupBox();
+            this.gbGameArea = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -52,18 +54,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.gbControler.SuspendLayout();
+            this.gbGameArea.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUp
             // 
             this.btnUp.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnUp.Location = new System.Drawing.Point(750, 198);
+            this.btnUp.Location = new System.Drawing.Point(60, 14);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(50, 50);
             this.btnUp.TabIndex = 0;
             this.btnUp.Text = "r";
             this.btnUp.UseVisualStyleBackColor = true;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            //this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // btnDown
             // 
@@ -88,7 +92,7 @@
             // btnLeft
             // 
             this.btnLeft.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnLeft.Location = new System.Drawing.Point(694, 254);
+            this.btnLeft.Location = new System.Drawing.Point(4, 70);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(50, 50);
             this.btnLeft.TabIndex = 4;
@@ -97,7 +101,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(230, 229);
+            this.pictureBox1.Location = new System.Drawing.Point(21, 93);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 75);
             this.pictureBox1.TabIndex = 5;
@@ -105,7 +109,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(311, 229);
+            this.pictureBox2.Location = new System.Drawing.Point(102, 93);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(75, 75);
             this.pictureBox2.TabIndex = 6;
@@ -113,7 +117,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(392, 229);
+            this.pictureBox3.Location = new System.Drawing.Point(183, 93);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(75, 75);
             this.pictureBox3.TabIndex = 7;
@@ -121,7 +125,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(230, 310);
+            this.pictureBox4.Location = new System.Drawing.Point(21, 174);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(75, 75);
             this.pictureBox4.TabIndex = 8;
@@ -129,7 +133,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(311, 310);
+            this.pictureBox5.Location = new System.Drawing.Point(102, 174);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(75, 75);
             this.pictureBox5.TabIndex = 9;
@@ -137,7 +141,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(392, 310);
+            this.pictureBox6.Location = new System.Drawing.Point(183, 174);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(75, 75);
             this.pictureBox6.TabIndex = 10;
@@ -145,7 +149,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(230, 148);
+            this.pictureBox7.Location = new System.Drawing.Point(21, 12);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(75, 75);
             this.pictureBox7.TabIndex = 11;
@@ -153,7 +157,7 @@
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Location = new System.Drawing.Point(311, 148);
+            this.pictureBox8.Location = new System.Drawing.Point(102, 12);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(75, 75);
             this.pictureBox8.TabIndex = 12;
@@ -161,7 +165,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Location = new System.Drawing.Point(392, 148);
+            this.pictureBox9.Location = new System.Drawing.Point(183, 12);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(75, 75);
             this.pictureBox9.TabIndex = 13;
@@ -186,28 +190,49 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Select a colour to move";
             // 
+            // gbControler
+            // 
+            this.gbControler.Controls.Add(this.btnLeft);
+            this.gbControler.Controls.Add(this.btnUp);
+            this.gbControler.Location = new System.Drawing.Point(690, 184);
+            this.gbControler.Name = "gbControler";
+            this.gbControler.Size = new System.Drawing.Size(165, 175);
+            this.gbControler.TabIndex = 16;
+            this.gbControler.TabStop = false;
+            this.gbControler.Text = "Controls";
+            // 
+            // gbGameArea
+            // 
+            this.gbGameArea.Controls.Add(this.pictureBox9);
+            this.gbGameArea.Controls.Add(this.pictureBox8);
+            this.gbGameArea.Controls.Add(this.pictureBox7);
+            this.gbGameArea.Controls.Add(this.pictureBox6);
+            this.gbGameArea.Controls.Add(this.pictureBox5);
+            this.gbGameArea.Controls.Add(this.pictureBox4);
+            this.gbGameArea.Controls.Add(this.pictureBox3);
+            this.gbGameArea.Controls.Add(this.pictureBox2);
+            this.gbGameArea.Controls.Add(this.pictureBox1);
+            this.gbGameArea.Location = new System.Drawing.Point(209, 136);
+            this.gbGameArea.Name = "gbGameArea";
+            this.gbGameArea.Size = new System.Drawing.Size(277, 266);
+            this.gbGameArea.TabIndex = 17;
+            this.gbGameArea.TabStop = false;
+            this.gbGameArea.Text = "Game Area";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 411);
+            this.Controls.Add(this.gbGameArea);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbColour);
-            this.Controls.Add(this.pictureBox9);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.btnRight);
             this.Controls.Add(this.btnDown);
-            this.Controls.Add(this.btnUp);
+            this.Controls.Add(this.gbControler);
             this.Name = "Form1";
             this.Text = "Grid Lock";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -217,6 +242,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.gbControler.ResumeLayout(false);
+            this.gbGameArea.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,6 +266,8 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.ComboBox cbColour;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gbControler;
+        private System.Windows.Forms.GroupBox gbGameArea;
     }
 }
 
