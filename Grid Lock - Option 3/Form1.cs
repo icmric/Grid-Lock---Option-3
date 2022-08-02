@@ -16,5 +16,10 @@ namespace Grid_Lock___Option_3
         {
             InitializeComponent();
         }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
