@@ -13,7 +13,7 @@ namespace Grid_Lock___Option_3
 {
     public partial class Form1 : Form
     {
-        PictureBox[,] gameBoard = new PictureBox[3, 3];
+        PictureBox[,] gameBoard = new PictureBox[7, 7];
         public Form1()
         {
             InitializeComponent();
@@ -30,13 +30,13 @@ namespace Grid_Lock___Option_3
                     index++;
                 }
             }
-            string[] startingConfigArray = File.ReadAllLines(@"startingconfig.txt");
+            string[] startingConfigArray = File.ReadAllLines(@"StartingConfig.txt");
             int startingConfigindex = 0;
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; i < 7; i++)
                 {
-                    gameBoard[i,j].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
+                    gameBoard[i, j].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
                     startingConfigindex++;
                 }
             }    
