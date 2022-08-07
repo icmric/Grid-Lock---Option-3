@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Grid_Lock___Option_3
 {
@@ -29,6 +30,16 @@ namespace Grid_Lock___Option_3
                     index++;
                 }
             }
+            string[] startingConfigArray = File.ReadAllLines(@"startingconfig.txt");
+            int startingConfigindex = 0;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; i < 7; i++)
+                {
+                    gameBoard[i,j].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
+                    startingConfigindex++;
+                }
+            }    
         }
     }
 }
