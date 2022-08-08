@@ -22,24 +22,35 @@ namespace Grid_Lock___Option_3
         private void Form1_Load(object sender, EventArgs e)
         {
             int index = 1; //tracks where we are in the array
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < j; j++) //rename j & i to x&y or something cleaner
+                for (int j = 0; j < 7; j++) //rename j & i to x&y or something cleaner
                 {
                     gameBoard[i, j] = (PictureBox)Controls.Find("pb" + (index).ToString(), true)[0];
                     index++;
                 }
             }
             string[] startingConfigArray = File.ReadAllLines(@"StartingConfig.txt");
+
             int startingConfigindex = 0;
-            for (int i = 0; i < 7; i++)
+
+            gameBoard[0, 0].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
+            startingConfigindex++;
+       
+
+            
+            for (int r = 0; r < 6; r++)
             {
-                for (int j = 0; i < 7; i++)
+                for (int c = 0; c < 6; c++)
                 {
-                    gameBoard[i, j].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
+                    
+                    
+                    gameBoard[r, c].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
                     startingConfigindex++;
+                    
                 }
             }
+            
         }
     }
 }
