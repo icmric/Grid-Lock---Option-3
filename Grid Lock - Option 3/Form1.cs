@@ -39,9 +39,9 @@ namespace Grid_Lock___Option_3
        
 
             
-            for (int r = 0; r < 6; r++)
+            for (int r = 0; r < 7; r++)
             {
-                for (int c = 0; c < 6; c++)
+                for (int c = 0; c < 7; c++)
                 {
                     
                     
