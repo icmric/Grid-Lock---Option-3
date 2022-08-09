@@ -36,21 +36,56 @@ namespace Grid_Lock___Option_3
 
             gameBoard[0, 0].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
             startingConfigindex++;
-       
 
-            
+
+
             for (int r = 0; r < 7; r++)
             {
                 for (int c = 0; c < 7; c++)
                 {
-                  //  
-                    
                     gameBoard[r, c].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
                     startingConfigindex++;
-                    
+
                 }
             }
-            
+
+        }
+        private void MoveUp(object sender, EventArgs e, string color)
+        {
+            bool moveLock = false; //Locks or unlocks movment
+            //loops thorugh gameboard checking all pictireboxes one at a time
+            for (int i = 0; i < 7; i++) //Rows
+            {
+                for (int j = 0; j < 7; j++) //Coloums
+                {
+                    //Makes sure the square that colour will move into is blank
+                    if (gameBoard[i, j].BackColor == Color.White)
+                    {
+                        //check what colour is selected
+                        if (gameBoard[i, j].BackColor == Color.FromName(cbColour.Text))
+                        {
+                            // prevents moving out of gameboard
+                            if (i == 0)
+                            {
+                                moveLock = true;
+                            }
+                            //moves piece up one square
+                            if (i > 0)
+                            {
+                                gameBoard[i - 1, j].BackColor = Color.FromName(color);
+                                gameBoard[i, j].BackColor = Color.White;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            string colour = cbColour.Text; 
+            MoveUp(this, e, colour);
         }
     }
 }
+
