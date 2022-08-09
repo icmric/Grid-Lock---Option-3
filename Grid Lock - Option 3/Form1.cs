@@ -43,7 +43,7 @@ namespace Grid_Lock___Option_3
             {
                 for (int c = 0; c < 7; c++)
                 {
-                    
+                  //  
                     
                     gameBoard[r, c].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
                     startingConfigindex++;
