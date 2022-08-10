@@ -51,32 +51,46 @@ namespace Grid_Lock___Option_3
 
         }
         private void MoveUp(object sender, EventArgs e, string color)
+        
         {
             bool moveLock = false; //Locks or unlocks movment
             //loops thorugh gameboard checking all pictireboxes one at a time
-            for (int i = 0; i < 7; i++) //Rows
+            for (int r = 0; r < 7; r++) //Rows
             {
                 for (int j = 0; j < 7; j++) //Coloums
                 {
-                    //Makes sure the square that colour will move into is blank
-                    if (gameBoard[i, j].BackColor == Color.White)
+                    if (Color.FromName(cbColour.Text) == Color.Green)
+                    {
+                        //Makes sure the square that colour will move into is blank
+                        if (gameBoard[r, j].BackColor == Color.Green)
+                        {
+                            if (gameBoard[r - 1, j].BackColor == Color.White)
+                            {
+                                gameBoard[r - 1, j].BackColor = Color.FromName(color);
+                                gameBoard[r, j].BackColor = Color.White;
+                            }
+                        }
+                    }   
+                    else
                     {
                         //check what colour is selected
-                        if (gameBoard[i, j].BackColor == Color.FromName(cbColour.Text))
+                        if (gameBoard[r, j].BackColor == Color.FromName(cbColour.Text))
                         {
                             // prevents moving out of gameboard
-                            if (i == 0)
+                            if (r == 0)
                             {
                                 moveLock = true;
                             }
                             //moves piece up one square
-                            if (i > 0)
+                            if (r > 0)
                             {
-                                gameBoard[i - 1, j].BackColor = Color.FromName(color);
-                                gameBoard[i, j].BackColor = Color.White;
+                                gameBoard[r - 1, j].BackColor = Color.FromName(color);
+                                gameBoard[r, j].BackColor = Color.White;
                             }
-                        }
+                        } 
                     }
+
+
                 }
             }
         }
