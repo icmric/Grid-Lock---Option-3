@@ -148,6 +148,7 @@
             this.btnDown.TabIndex = 1;
             this.btnDown.Text = "s";
             this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnRight
             // 
@@ -712,6 +713,7 @@
             this.btnLeft.TabIndex = 4;
             this.btnLeft.Text = "v";
             this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // gbControls
             // 

@@ -51,7 +51,6 @@ namespace Grid_Lock___Option_3
 
         }
         private void MoveUp(object sender, EventArgs e, string color)
-        
         {
             bool moveLock = false; //Locks or unlocks movment
             //loops thorugh gameboard checking all pictireboxes one at a time
@@ -61,16 +60,20 @@ namespace Grid_Lock___Option_3
                 {
                     if (Color.FromName(cbColour.Text) == Color.Green)
                     {
-                        //Makes sure the square that colour will move into is blank
-                        if (gameBoard[r, j].BackColor == Color.Green)
+                        if (r - 1 >= 0)
                         {
-                            if (gameBoard[r - 1, j].BackColor == Color.White)
+                            //Makes sure the square that colour will move into is blank
+                            if (gameBoard[r, j].BackColor == Color.Green)
                             {
-                                gameBoard[r - 1, j].BackColor = Color.FromName(color);
-                                gameBoard[r, j].BackColor = Color.White;
+                                if (gameBoard[r - 1, j].BackColor == Color.White)
+                                {
+                                    gameBoard[r - 1, j].BackColor = Color.FromName(color);
+                                    gameBoard[r, j].BackColor = Color.White;
+                                }
                             }
                         }
-                    }   
+
+                    }
                     else
                     {
                         //check what colour is selected
@@ -87,7 +90,54 @@ namespace Grid_Lock___Option_3
                                 gameBoard[r - 1, j].BackColor = Color.FromName(color);
                                 gameBoard[r, j].BackColor = Color.White;
                             }
-                        } 
+                        }
+                    }
+
+
+                }
+            }
+        }
+        private void MoveDown(object sender, EventArgs e, string color)
+        {
+            bool moveLock = false; //Locks or unlocks movment
+            //loops thorugh gameboard checking all pictireboxes one at a time
+            for (int r = 0; r < 7; r++) //Rows
+            {
+                for (int j = 0; j < 7; j++) //Coloums
+                {
+                    if (Color.FromName(cbColour.Text) == Color.Green)
+                    {
+                        if (r + 1 >= 0)
+                        {
+                            //Makes sure the square that colour will move into is blank
+                            if (gameBoard[r, j].BackColor == Color.Green)
+                            {
+                                if (gameBoard[r + 1, j].BackColor == Color.White)
+                                {
+                                    gameBoard[r + 1, j].BackColor = Color.FromName(color);
+                                    gameBoard[r, j].BackColor = Color.White;
+                                }
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        //check what colour is selected
+                        if (gameBoard[r, j].BackColor == Color.FromName(cbColour.Text))
+                        {
+                            // prevents moving out of gameboard
+                            if (r == 0)
+                            {
+                                moveLock = true;
+                            }
+                            //moves piece up one square
+                            if (r > 0)
+                            {
+                                gameBoard[r + 1, j].BackColor = Color.FromName(color);
+                                gameBoard[r, j].BackColor = Color.White;
+                            }
+                        }
                     }
 
 
@@ -95,11 +145,72 @@ namespace Grid_Lock___Option_3
             }
         }
 
+        private void MoveLeft(object sender, EventArgs e, string color)
+        {
+
+            bool moveLock = false; //Locks or unlocks movment
+            //loops thorugh gameboard checking all pictireboxes one at a time
+            for (int r = 0; r < 7; r++) //Rows
+            {
+                for (int j = 0; j < 7; j++) //Coloums
+                {
+                    if (Color.FromName(cbColour.Text) == Color.Green)
+                    {
+                        //Makes sure the square that colour will move into is blank
+                        if (gameBoard[r, j].BackColor == Color.Green)
+                        {
+                            if (gameBoard[r, j - 1].BackColor == Color.White)
+                            {
+                                gameBoard[r, j - 1].BackColor = Color.FromName(color);
+                                gameBoard[r, j].BackColor = Color.White;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //check what colour is selected
+                        if (gameBoard[r, j].BackColor == Color.FromName(cbColour.Text))
+                        {
+                            // prevents moving out of gameboard
+                            if (r == 0)
+                            {
+                                moveLock = true;
+                            }
+                            //moves piece left one square
+                            if (r > 0)
+                            {
+                                gameBoard[r, j - 1].BackColor = Color.FromName(color);
+                                gameBoard[r, j].BackColor = Color.White;
+                            }
+                        }
+                    }
+
+
+                }
+
+
+            }
+        }
+
         private void btnUp_Click(object sender, EventArgs e)
         {
-            string colour = cbColour.Text; 
+            string colour = cbColour.Text;
             MoveUp(this, e, colour);
         }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            string colour = cbColour.Text;
+            MoveLeft(this, e, colour);
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            string colour = cbColour.Text;
+            MoveLeft(this, e, colour);
+        }
     }
+
 }
+
 
