@@ -30,7 +30,17 @@ namespace Grid_Lock___Option_3
                     index++;
                 }
             }
-            string[] startingConfigArray = File.ReadAllLines(@"StartingConfig.txt");
+            //string[] startingConfigArray = File.ReadAllLines(@"StartingConfig.txt");
+            List<string> startingConfigArray = new List<string>();
+            StreamReader reader = new StreamReader(@"StartingConfig.csv");
+            //int configIndex = 0;
+            string line;
+            //startingConfigArray.Add(reader.ReadLine());
+            while ((line = reader.ReadLine()) != null)
+                startingConfigArray.Add(line);
+            
+            //MessageBox.Show(startingConfigArray[3]);
+            
 
             int startingConfigindex = 0;
 
