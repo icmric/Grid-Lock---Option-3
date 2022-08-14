@@ -79,29 +79,30 @@ namespace Grid_Lock___Option_3
                                 }
                             }
                         }
-                        if (move == "x-")
+                        if (move == "right.")
                         {
-                            if (r - 1 > 0)
+                            if (r > 0)
                             {
-                               for (int i = 0; i < 4; i++)
-                                {
-                                    //Makes sure the square that colour will move into is blank
-                                   if (gameBoard[r, j].BackColor == Color.Green)
+                               //for (int i = 0; i < 4; i++)
+                                //{
+                                    if (gameBoard[r, j].BackColor == Color.Green)
                                     {
-                                        if (gameBoard[r, j--].BackColor == Color.White)
+                                        if (gameBoard[r, j-2].BackColor == Color.White)
                                         {
-                                                gameBoard[r, j--].BackColor = Color.FromName(color);
+                                            MessageBox.Show(Convert.ToString(r) + Convert.ToString(j));
+                                            gameBoard[r, j--].BackColor = Color.Green;
                                                 gameBoard[r, j].BackColor = Color.White;
                                                
                                         }   
                                     }
-                                }
+                                //}
                                
                             }
                         }
                         
 
                     }
+                    /*
                         //check what colour is selected
                         if (gameBoard[r, j].BackColor == Color.FromName(cbColour.Text))
                         {
@@ -117,6 +118,7 @@ namespace Grid_Lock___Option_3
                                 gameBoard[r, j].BackColor = Color.White;
                             }
                         }
+                       */
 
 
                 }
@@ -128,21 +130,20 @@ namespace Grid_Lock___Option_3
             //loops thorugh gameboard checking all pictireboxes one at a time
             for (int r = 6; r > 0; r--) //Rows
             {
-                for (int j = 6; j >= 0; j--) //Coloums
+                for (int c = 6; c >= 0; c--) //Coloums
                 {
                     if (Color.FromName(cbColour.Text) == Color.Green)
                     {
-                        if (move == "x+")
+                        if (move == "right")
                         {
-                            if (j <= 6 && r <= 6)
+                            if (c <= 6)
                             {
-                                if (gameBoard[r, j].BackColor == Color.Green)
+                                if (gameBoard[r, c].BackColor == Color.Green)
                                 {
-                                    MessageBox.Show(Convert.ToString(r) + Convert.ToString(j));
-                                    if (gameBoard[r, j-1].BackColor == Color.White)
+                                    if (gameBoard[r, c++].BackColor == Color.White)
                                         {
-                                        gameBoard[r, j++].BackColor = Color.White;
-                                        gameBoard[r, j].BackColor = Color.FromName(color);
+                                        gameBoard[r, c].BackColor = Color.White;
+                                        gameBoard[r, c++].BackColor = Color.FromName(color);
                                         move = null;
                                     }
                                 }
@@ -155,12 +156,12 @@ namespace Grid_Lock___Option_3
                                 for (int i = 0; i < 4; i++)
                                 {
                                     //Makes sure the square that colour will move into is blank
-                                    if (gameBoard[r, j].BackColor == Color.Green)
+                                    if (gameBoard[r, c].BackColor == Color.Green)
                                     {
-                                        if (gameBoard[r + 1, j].BackColor == Color.White)
+                                        if (gameBoard[r + 1, c].BackColor == Color.White)
                                         {
-                                            gameBoard[r + 1, j].BackColor = Color.FromName(color);
-                                            gameBoard[r, j].BackColor = Color.White;
+                                            gameBoard[r + 1, c].BackColor = Color.FromName(color);
+                                            gameBoard[r, c].BackColor = Color.White;
 
                                         }
                                     }
@@ -172,7 +173,7 @@ namespace Grid_Lock___Option_3
 
                     }
                     //check what colour is selected
-                    if (gameBoard[r, j].BackColor == Color.FromName(cbColour.Text))
+                    if (gameBoard[r, c].BackColor == Color.FromName(cbColour.Text))
                     {
                         // prevents moving out of gameboard
                         if (r == 0)
@@ -182,8 +183,8 @@ namespace Grid_Lock___Option_3
                         //moves piece up one square
                         if (r > 0)
                         {
-                            gameBoard[r - 1, j].BackColor = Color.FromName(color);
-                            gameBoard[r, j].BackColor = Color.White;
+                            gameBoard[r - 1, c].BackColor = Color.FromName(color);
+                            gameBoard[r, c].BackColor = Color.White;
                         }
                     }
 
@@ -191,7 +192,7 @@ namespace Grid_Lock___Option_3
                 }
             }
         }
-
+        /*
         private void MoveDown(object sender, EventArgs e, string color)
         {
             bool moveLock = false; //Locks or unlocks movment
@@ -238,8 +239,8 @@ namespace Grid_Lock___Option_3
 
                 }
             }
-        }
-
+        } */
+        /*
         private void MoveLeft(object sender, EventArgs e, string color)
         {
 
@@ -286,7 +287,7 @@ namespace Grid_Lock___Option_3
 
             }
         }
-
+        */
         private void btnUp_Click(object sender, EventArgs e)
         {
             string colour = cbColour.Text;
@@ -309,7 +310,7 @@ namespace Grid_Lock___Option_3
         private void btnRight_Click(object sender, EventArgs e)
         {
             string colour = cbColour.Text;
-            string move = "x+";
+            string move = "right";
             MoveMinus(this, e, colour, move);
         }
     }
