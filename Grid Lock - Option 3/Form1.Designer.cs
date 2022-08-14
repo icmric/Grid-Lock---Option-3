@@ -142,7 +142,7 @@
             // 
             this.btnDown.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnDown.Location = new System.Drawing.Point(130, 244);
-            this.btnDown.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnDown.Margin = new System.Windows.Forms.Padding(6);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(100, 96);
             this.btnDown.TabIndex = 1;
@@ -154,17 +154,18 @@
             // 
             this.btnRight.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnRight.Location = new System.Drawing.Point(242, 137);
-            this.btnRight.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnRight.Margin = new System.Windows.Forms.Padding(6);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(100, 96);
             this.btnRight.TabIndex = 3;
             this.btnRight.Text = "w";
             this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // pb8
             // 
             this.pb8.Location = new System.Drawing.Point(16, 108);
-            this.pb8.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb8.Margin = new System.Windows.Forms.Padding(6);
             this.pb8.Name = "pb8";
             this.pb8.Size = new System.Drawing.Size(76, 75);
             this.pb8.TabIndex = 11;
@@ -184,7 +185,7 @@
             "Black",
             "Pink"});
             this.cbColour.Location = new System.Drawing.Point(172, 71);
-            this.cbColour.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbColour.Margin = new System.Windows.Forms.Padding(6);
             this.cbColour.Name = "cbColour";
             this.cbColour.Size = new System.Drawing.Size(470, 33);
             this.cbColour.TabIndex = 14;
@@ -251,9 +252,9 @@
             this.gbGameArea.Controls.Add(this.pb10);
             this.gbGameArea.Controls.Add(this.pb8);
             this.gbGameArea.Location = new System.Drawing.Point(118, 117);
-            this.gbGameArea.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbGameArea.Margin = new System.Windows.Forms.Padding(6);
             this.gbGameArea.Name = "gbGameArea";
-            this.gbGameArea.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbGameArea.Padding = new System.Windows.Forms.Padding(6);
             this.gbGameArea.Size = new System.Drawing.Size(640, 629);
             this.gbGameArea.TabIndex = 17;
             this.gbGameArea.TabStop = false;
@@ -262,7 +263,7 @@
             // pb48
             // 
             this.pb48.Location = new System.Drawing.Point(452, 542);
-            this.pb48.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb48.Margin = new System.Windows.Forms.Padding(6);
             this.pb48.Name = "pb48";
             this.pb48.Size = new System.Drawing.Size(76, 75);
             this.pb48.TabIndex = 80;
@@ -271,7 +272,7 @@
             // pb47
             // 
             this.pb47.Location = new System.Drawing.Point(364, 542);
-            this.pb47.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb47.Margin = new System.Windows.Forms.Padding(6);
             this.pb47.Name = "pb47";
             this.pb47.Size = new System.Drawing.Size(76, 75);
             this.pb47.TabIndex = 79;
@@ -280,7 +281,7 @@
             // pb46
             // 
             this.pb46.Location = new System.Drawing.Point(276, 542);
-            this.pb46.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb46.Margin = new System.Windows.Forms.Padding(6);
             this.pb46.Name = "pb46";
             this.pb46.Size = new System.Drawing.Size(76, 75);
             this.pb46.TabIndex = 78;
@@ -289,7 +290,7 @@
             // pb45
             // 
             this.pb45.Location = new System.Drawing.Point(190, 542);
-            this.pb45.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb45.Margin = new System.Windows.Forms.Padding(6);
             this.pb45.Name = "pb45";
             this.pb45.Size = new System.Drawing.Size(76, 75);
             this.pb45.TabIndex = 77;
@@ -298,7 +299,7 @@
             // pb44
             // 
             this.pb44.Location = new System.Drawing.Point(104, 542);
-            this.pb44.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb44.Margin = new System.Windows.Forms.Padding(6);
             this.pb44.Name = "pb44";
             this.pb44.Size = new System.Drawing.Size(76, 75);
             this.pb44.TabIndex = 76;
@@ -307,7 +308,7 @@
             // pb43
             // 
             this.pb43.Location = new System.Drawing.Point(16, 542);
-            this.pb43.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb43.Margin = new System.Windows.Forms.Padding(6);
             this.pb43.Name = "pb43";
             this.pb43.Size = new System.Drawing.Size(76, 75);
             this.pb43.TabIndex = 75;
@@ -316,7 +317,7 @@
             // pb41
             // 
             this.pb41.Location = new System.Drawing.Point(452, 456);
-            this.pb41.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb41.Margin = new System.Windows.Forms.Padding(6);
             this.pb41.Name = "pb41";
             this.pb41.Size = new System.Drawing.Size(76, 75);
             this.pb41.TabIndex = 74;
@@ -325,7 +326,7 @@
             // pb40
             // 
             this.pb40.Location = new System.Drawing.Point(364, 456);
-            this.pb40.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb40.Margin = new System.Windows.Forms.Padding(6);
             this.pb40.Name = "pb40";
             this.pb40.Size = new System.Drawing.Size(76, 75);
             this.pb40.TabIndex = 73;
@@ -334,7 +335,7 @@
             // pb39
             // 
             this.pb39.Location = new System.Drawing.Point(276, 456);
-            this.pb39.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb39.Margin = new System.Windows.Forms.Padding(6);
             this.pb39.Name = "pb39";
             this.pb39.Size = new System.Drawing.Size(76, 75);
             this.pb39.TabIndex = 72;
@@ -343,7 +344,7 @@
             // pb38
             // 
             this.pb38.Location = new System.Drawing.Point(190, 456);
-            this.pb38.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb38.Margin = new System.Windows.Forms.Padding(6);
             this.pb38.Name = "pb38";
             this.pb38.Size = new System.Drawing.Size(76, 75);
             this.pb38.TabIndex = 71;
@@ -352,7 +353,7 @@
             // pb37
             // 
             this.pb37.Location = new System.Drawing.Point(104, 456);
-            this.pb37.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb37.Margin = new System.Windows.Forms.Padding(6);
             this.pb37.Name = "pb37";
             this.pb37.Size = new System.Drawing.Size(76, 75);
             this.pb37.TabIndex = 70;
@@ -361,7 +362,7 @@
             // pb36
             // 
             this.pb36.Location = new System.Drawing.Point(16, 456);
-            this.pb36.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb36.Margin = new System.Windows.Forms.Padding(6);
             this.pb36.Name = "pb36";
             this.pb36.Size = new System.Drawing.Size(76, 75);
             this.pb36.TabIndex = 69;
@@ -370,7 +371,7 @@
             // pb34
             // 
             this.pb34.Location = new System.Drawing.Point(452, 367);
-            this.pb34.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb34.Margin = new System.Windows.Forms.Padding(6);
             this.pb34.Name = "pb34";
             this.pb34.Size = new System.Drawing.Size(76, 75);
             this.pb34.TabIndex = 68;
@@ -379,7 +380,7 @@
             // pb33
             // 
             this.pb33.Location = new System.Drawing.Point(364, 367);
-            this.pb33.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb33.Margin = new System.Windows.Forms.Padding(6);
             this.pb33.Name = "pb33";
             this.pb33.Size = new System.Drawing.Size(76, 75);
             this.pb33.TabIndex = 67;
@@ -388,7 +389,7 @@
             // pb32
             // 
             this.pb32.Location = new System.Drawing.Point(276, 367);
-            this.pb32.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb32.Margin = new System.Windows.Forms.Padding(6);
             this.pb32.Name = "pb32";
             this.pb32.Size = new System.Drawing.Size(76, 75);
             this.pb32.TabIndex = 66;
@@ -397,7 +398,7 @@
             // pb31
             // 
             this.pb31.Location = new System.Drawing.Point(190, 367);
-            this.pb31.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb31.Margin = new System.Windows.Forms.Padding(6);
             this.pb31.Name = "pb31";
             this.pb31.Size = new System.Drawing.Size(76, 75);
             this.pb31.TabIndex = 65;
@@ -406,7 +407,7 @@
             // pb30
             // 
             this.pb30.Location = new System.Drawing.Point(104, 367);
-            this.pb30.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb30.Margin = new System.Windows.Forms.Padding(6);
             this.pb30.Name = "pb30";
             this.pb30.Size = new System.Drawing.Size(76, 75);
             this.pb30.TabIndex = 64;
@@ -415,7 +416,7 @@
             // pb29
             // 
             this.pb29.Location = new System.Drawing.Point(16, 367);
-            this.pb29.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb29.Margin = new System.Windows.Forms.Padding(6);
             this.pb29.Name = "pb29";
             this.pb29.Size = new System.Drawing.Size(76, 75);
             this.pb29.TabIndex = 63;
@@ -424,7 +425,7 @@
             // pb27
             // 
             this.pb27.Location = new System.Drawing.Point(450, 281);
-            this.pb27.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb27.Margin = new System.Windows.Forms.Padding(6);
             this.pb27.Name = "pb27";
             this.pb27.Size = new System.Drawing.Size(76, 75);
             this.pb27.TabIndex = 62;
@@ -433,7 +434,7 @@
             // pb26
             // 
             this.pb26.Location = new System.Drawing.Point(364, 281);
-            this.pb26.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb26.Margin = new System.Windows.Forms.Padding(6);
             this.pb26.Name = "pb26";
             this.pb26.Size = new System.Drawing.Size(76, 75);
             this.pb26.TabIndex = 61;
@@ -442,7 +443,7 @@
             // pb25
             // 
             this.pb25.Location = new System.Drawing.Point(276, 281);
-            this.pb25.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb25.Margin = new System.Windows.Forms.Padding(6);
             this.pb25.Name = "pb25";
             this.pb25.Size = new System.Drawing.Size(76, 75);
             this.pb25.TabIndex = 60;
@@ -451,7 +452,7 @@
             // pb7
             // 
             this.pb7.Location = new System.Drawing.Point(538, 23);
-            this.pb7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb7.Margin = new System.Windows.Forms.Padding(6);
             this.pb7.Name = "pb7";
             this.pb7.Size = new System.Drawing.Size(76, 75);
             this.pb7.TabIndex = 59;
@@ -460,7 +461,7 @@
             // pb49
             // 
             this.pb49.Location = new System.Drawing.Point(538, 542);
-            this.pb49.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb49.Margin = new System.Windows.Forms.Padding(6);
             this.pb49.Name = "pb49";
             this.pb49.Size = new System.Drawing.Size(76, 75);
             this.pb49.TabIndex = 58;
@@ -469,7 +470,7 @@
             // pb42
             // 
             this.pb42.Location = new System.Drawing.Point(538, 456);
-            this.pb42.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb42.Margin = new System.Windows.Forms.Padding(6);
             this.pb42.Name = "pb42";
             this.pb42.Size = new System.Drawing.Size(76, 75);
             this.pb42.TabIndex = 57;
@@ -478,7 +479,7 @@
             // pb35
             // 
             this.pb35.Location = new System.Drawing.Point(538, 367);
-            this.pb35.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb35.Margin = new System.Windows.Forms.Padding(6);
             this.pb35.Name = "pb35";
             this.pb35.Size = new System.Drawing.Size(76, 75);
             this.pb35.TabIndex = 56;
@@ -487,7 +488,7 @@
             // pb28
             // 
             this.pb28.Location = new System.Drawing.Point(538, 281);
-            this.pb28.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb28.Margin = new System.Windows.Forms.Padding(6);
             this.pb28.Name = "pb28";
             this.pb28.Size = new System.Drawing.Size(76, 75);
             this.pb28.TabIndex = 55;
@@ -496,7 +497,7 @@
             // pb21
             // 
             this.pb21.Location = new System.Drawing.Point(538, 194);
-            this.pb21.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb21.Margin = new System.Windows.Forms.Padding(6);
             this.pb21.Name = "pb21";
             this.pb21.Size = new System.Drawing.Size(76, 75);
             this.pb21.TabIndex = 54;
@@ -505,7 +506,7 @@
             // pb14
             // 
             this.pb14.Location = new System.Drawing.Point(538, 108);
-            this.pb14.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb14.Margin = new System.Windows.Forms.Padding(6);
             this.pb14.Name = "pb14";
             this.pb14.Size = new System.Drawing.Size(76, 75);
             this.pb14.TabIndex = 53;
@@ -514,7 +515,7 @@
             // pb6
             // 
             this.pb6.Location = new System.Drawing.Point(452, 23);
-            this.pb6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb6.Margin = new System.Windows.Forms.Padding(6);
             this.pb6.Name = "pb6";
             this.pb6.Size = new System.Drawing.Size(76, 75);
             this.pb6.TabIndex = 52;
@@ -523,7 +524,7 @@
             // pb5
             // 
             this.pb5.Location = new System.Drawing.Point(364, 23);
-            this.pb5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb5.Margin = new System.Windows.Forms.Padding(6);
             this.pb5.Name = "pb5";
             this.pb5.Size = new System.Drawing.Size(76, 75);
             this.pb5.TabIndex = 51;
@@ -532,7 +533,7 @@
             // pb4
             // 
             this.pb4.Location = new System.Drawing.Point(276, 23);
-            this.pb4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb4.Margin = new System.Windows.Forms.Padding(6);
             this.pb4.Name = "pb4";
             this.pb4.Size = new System.Drawing.Size(76, 75);
             this.pb4.TabIndex = 50;
@@ -541,7 +542,7 @@
             // pb2
             // 
             this.pb2.Location = new System.Drawing.Point(104, 23);
-            this.pb2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb2.Margin = new System.Windows.Forms.Padding(6);
             this.pb2.Name = "pb2";
             this.pb2.Size = new System.Drawing.Size(76, 75);
             this.pb2.TabIndex = 49;
@@ -550,7 +551,7 @@
             // pb3
             // 
             this.pb3.Location = new System.Drawing.Point(190, 23);
-            this.pb3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb3.Margin = new System.Windows.Forms.Padding(6);
             this.pb3.Name = "pb3";
             this.pb3.Size = new System.Drawing.Size(76, 75);
             this.pb3.TabIndex = 48;
@@ -559,7 +560,7 @@
             // pb1
             // 
             this.pb1.Location = new System.Drawing.Point(16, 23);
-            this.pb1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb1.Margin = new System.Windows.Forms.Padding(6);
             this.pb1.Name = "pb1";
             this.pb1.Size = new System.Drawing.Size(76, 75);
             this.pb1.TabIndex = 47;
@@ -568,7 +569,7 @@
             // pb23
             // 
             this.pb23.Location = new System.Drawing.Point(104, 281);
-            this.pb23.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb23.Margin = new System.Windows.Forms.Padding(6);
             this.pb23.Name = "pb23";
             this.pb23.Size = new System.Drawing.Size(76, 75);
             this.pb23.TabIndex = 25;
@@ -577,7 +578,7 @@
             // pb24
             // 
             this.pb24.Location = new System.Drawing.Point(190, 281);
-            this.pb24.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb24.Margin = new System.Windows.Forms.Padding(6);
             this.pb24.Name = "pb24";
             this.pb24.Size = new System.Drawing.Size(76, 75);
             this.pb24.TabIndex = 24;
@@ -586,7 +587,7 @@
             // pb22
             // 
             this.pb22.Location = new System.Drawing.Point(16, 281);
-            this.pb22.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb22.Margin = new System.Windows.Forms.Padding(6);
             this.pb22.Name = "pb22";
             this.pb22.Size = new System.Drawing.Size(76, 75);
             this.pb22.TabIndex = 23;
@@ -595,7 +596,7 @@
             // pb20
             // 
             this.pb20.Location = new System.Drawing.Point(452, 194);
-            this.pb20.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb20.Margin = new System.Windows.Forms.Padding(6);
             this.pb20.Name = "pb20";
             this.pb20.Size = new System.Drawing.Size(76, 75);
             this.pb20.TabIndex = 22;
@@ -604,7 +605,7 @@
             // pb19
             // 
             this.pb19.Location = new System.Drawing.Point(364, 194);
-            this.pb19.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb19.Margin = new System.Windows.Forms.Padding(6);
             this.pb19.Name = "pb19";
             this.pb19.Size = new System.Drawing.Size(76, 75);
             this.pb19.TabIndex = 21;
@@ -613,7 +614,7 @@
             // pb18
             // 
             this.pb18.Location = new System.Drawing.Point(276, 194);
-            this.pb18.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb18.Margin = new System.Windows.Forms.Padding(6);
             this.pb18.Name = "pb18";
             this.pb18.Size = new System.Drawing.Size(76, 75);
             this.pb18.TabIndex = 20;
@@ -622,7 +623,7 @@
             // pb16
             // 
             this.pb16.Location = new System.Drawing.Point(104, 194);
-            this.pb16.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb16.Margin = new System.Windows.Forms.Padding(6);
             this.pb16.Name = "pb16";
             this.pb16.Size = new System.Drawing.Size(76, 75);
             this.pb16.TabIndex = 19;
@@ -631,7 +632,7 @@
             // pb17
             // 
             this.pb17.Location = new System.Drawing.Point(190, 194);
-            this.pb17.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb17.Margin = new System.Windows.Forms.Padding(6);
             this.pb17.Name = "pb17";
             this.pb17.Size = new System.Drawing.Size(76, 75);
             this.pb17.TabIndex = 18;
@@ -640,7 +641,7 @@
             // pb15
             // 
             this.pb15.Location = new System.Drawing.Point(16, 194);
-            this.pb15.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb15.Margin = new System.Windows.Forms.Padding(6);
             this.pb15.Name = "pb15";
             this.pb15.Size = new System.Drawing.Size(76, 75);
             this.pb15.TabIndex = 17;
@@ -649,7 +650,7 @@
             // pb13
             // 
             this.pb13.Location = new System.Drawing.Point(452, 108);
-            this.pb13.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb13.Margin = new System.Windows.Forms.Padding(6);
             this.pb13.Name = "pb13";
             this.pb13.Size = new System.Drawing.Size(76, 75);
             this.pb13.TabIndex = 16;
@@ -658,7 +659,7 @@
             // pb12
             // 
             this.pb12.Location = new System.Drawing.Point(364, 108);
-            this.pb12.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb12.Margin = new System.Windows.Forms.Padding(6);
             this.pb12.Name = "pb12";
             this.pb12.Size = new System.Drawing.Size(76, 75);
             this.pb12.TabIndex = 15;
@@ -667,7 +668,7 @@
             // pb11
             // 
             this.pb11.Location = new System.Drawing.Point(276, 108);
-            this.pb11.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb11.Margin = new System.Windows.Forms.Padding(6);
             this.pb11.Name = "pb11";
             this.pb11.Size = new System.Drawing.Size(76, 75);
             this.pb11.TabIndex = 14;
@@ -676,7 +677,7 @@
             // pb9
             // 
             this.pb9.Location = new System.Drawing.Point(104, 108);
-            this.pb9.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb9.Margin = new System.Windows.Forms.Padding(6);
             this.pb9.Name = "pb9";
             this.pb9.Size = new System.Drawing.Size(76, 75);
             this.pb9.TabIndex = 13;
@@ -685,7 +686,7 @@
             // pb10
             // 
             this.pb10.Location = new System.Drawing.Point(190, 108);
-            this.pb10.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pb10.Margin = new System.Windows.Forms.Padding(6);
             this.pb10.Name = "pb10";
             this.pb10.Size = new System.Drawing.Size(76, 75);
             this.pb10.TabIndex = 12;
@@ -695,7 +696,7 @@
             // 
             this.btnUp.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnUp.Location = new System.Drawing.Point(130, 35);
-            this.btnUp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnUp.Margin = new System.Windows.Forms.Padding(6);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(100, 96);
             this.btnUp.TabIndex = 0;
@@ -707,7 +708,7 @@
             // 
             this.btnLeft.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnLeft.Location = new System.Drawing.Point(16, 137);
-            this.btnLeft.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnLeft.Margin = new System.Windows.Forms.Padding(6);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(100, 96);
             this.btnLeft.TabIndex = 4;
@@ -722,9 +723,9 @@
             this.gbControls.Controls.Add(this.btnUp);
             this.gbControls.Controls.Add(this.btnDown);
             this.gbControls.Location = new System.Drawing.Point(920, 283);
-            this.gbControls.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbControls.Margin = new System.Windows.Forms.Padding(4);
             this.gbControls.Name = "gbControls";
-            this.gbControls.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbControls.Padding = new System.Windows.Forms.Padding(4);
             this.gbControls.Size = new System.Drawing.Size(368, 383);
             this.gbControls.TabIndex = 18;
             this.gbControls.TabStop = false;
@@ -739,7 +740,7 @@
             this.Controls.Add(this.gbGameArea);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbColour);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "Grid Lock";
             this.Load += new System.EventHandler(this.Form1_Load);
