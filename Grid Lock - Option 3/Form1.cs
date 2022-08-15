@@ -128,7 +128,7 @@ namespace Grid_Lock___Option_3
         {
             bool moveLock = false; //Locks or unlocks movment
             //loops thorugh gameboard checking all pictireboxes one at a time
-            for (int r = 6; r > 0; r--) //Rows
+            for (int r = 6; r >= 0; r--) //Rows
             {
                 for (int c = 6; c >= 0; c--) //Coloums
                 {
@@ -140,11 +140,10 @@ namespace Grid_Lock___Option_3
                             {
                                 if (gameBoard[r, c].BackColor == Color.Green)
                                 {
-                                    if (gameBoard[r, c++].BackColor == Color.White)
-                                        {
-                                        gameBoard[r, c].BackColor = Color.White;
-                                        gameBoard[r, c++].BackColor = Color.FromName(color);
-                                        move = null;
+                                    if (gameBoard[r, c + 1].BackColor == Color.White)
+                                    {
+                                            gameBoard[r, c].BackColor = Color.White;
+                                            gameBoard[r, c + 1].BackColor = Color.FromName(color);
                                     }
                                 }
                             }
@@ -172,23 +171,6 @@ namespace Grid_Lock___Option_3
 
 
                     }
-                    //check what colour is selected
-                    if (gameBoard[r, c].BackColor == Color.FromName(cbColour.Text))
-                    {
-                        // prevents moving out of gameboard
-                        if (r == 0)
-                        {
-                            moveLock = true;
-                        }
-                        //moves piece up one square
-                        if (r > 0)
-                        {
-                            gameBoard[r - 1, c].BackColor = Color.FromName(color);
-                            gameBoard[r, c].BackColor = Color.White;
-                        }
-                    }
-
-
                 }
             }
         }
