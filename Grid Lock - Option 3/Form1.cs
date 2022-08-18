@@ -30,7 +30,6 @@ namespace Grid_Lock___Option_3
                     index++;
                 }
             }
-            //string[] startingConfigArray = File.ReadAllLines(@"StartingConfig.txt");
             List<string> startingConfigArray = new List<string>();
             StreamReader reader = new StreamReader(@"StartingConfig.csv");
             string line;
@@ -61,28 +60,36 @@ namespace Grid_Lock___Option_3
             {
                 for (int c = 0; c < 7; c++) //Coloums
                 {
-                    if (Color.FromName(cbColour.Text) == Color.Green)
+                    if (move == "Up")
                     {
-                        if (move == "Up")
+                        if (r - 1 >= 0)
                         {
-                            if (r - 1 >= 0)
-                            { 
-                                //Makes sure the square that colour will move into is blank
-                                if (gameBoard[r, c].BackColor == Color.Green)
+                            //Makes sure the square that colour will move into is blank
+                            if (gameBoard[r, c].BackColor == Color.Green)
+                            {
+                                if (gameBoard[r - 1, c].BackColor == Color.White)
                                 {
-                                    if (gameBoard[r - 1, c].BackColor == Color.White)
-                                    {
-                                        gameBoard[r - 1, c].BackColor = Color.FromName(colour);
-                                        gameBoard[r, c].BackColor = Color.White;
-                                    }
+                                    gameBoard[r - 1, c].BackColor = Color.FromName(colour);
+                                    gameBoard[r, c].BackColor = Color.White;
                                 }
                             }
                         }
-                        if (move == "Left")
+                    }
+                    if (move == "Left")
+                    {
+                        if (c > 0)
                         {
-                            if (r > 0)
+                            if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
-                                if (gameBoard[r, c].BackColor == Color.Green)
+                                if (gameBoard[r, c - 1].BackColor == Color.White)
+                                {
+                                    gameBoard[r, c].BackColor = Color.White;
+                                    gameBoard[r, c - 1].BackColor = Color.FromName(colour);
+                                }
+                            }
+                            else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
+                            {
+                                if (gameBoard[r, c -1].BackColor == Color.White)
                                 {
                                     if (gameBoard[r, c - 1].BackColor == Color.White)
                                     {
@@ -90,21 +97,11 @@ namespace Grid_Lock___Option_3
                                         gameBoard[r, c - 1].BackColor = Color.FromName(colour);
                                     }
                                 }
-                                else if (gameBoard[r, c].BackColor != Color.Green)
-                                {
-                                    if (Convert.ToString(gameBoard[r, c + 1].BackColor) == colour || Convert.ToString(gameBoard[r, c - 1].BackColor) == colour)
-                                    {
-                                        if (gameBoard[r, c - 1].BackColor == Color.White)
-                                        {
-                                            gameBoard[r, c].BackColor = Color.White;
-                                            gameBoard[r, c - 1].BackColor = Color.FromName(colour);
-                                        }
-                                    }
-                                }
-
                             }
+
                         }
                     }
+                
                 }
             }
         }
