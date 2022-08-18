@@ -89,7 +89,7 @@ namespace Grid_Lock___Option_3
                             }
                             else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
                             {
-                                if (gameBoard[r, c -1].BackColor == Color.White)
+                                if (Convert.ToString(gameBoard[r, c + 1].BackColor) == colour && Convert.ToString(gameBoard[r + 1, c].BackColor) != colour)
                                 {
                                     if (gameBoard[r, c - 1].BackColor == Color.White)
                                     {
