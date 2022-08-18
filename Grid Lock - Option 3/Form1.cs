@@ -18,9 +18,12 @@ namespace Grid_Lock___Option_3
         {
             InitializeComponent();
         }
-
+       public int msec;
+       public int sec;
+       public int min;
         private void Form1_Load(object sender, EventArgs e)
         {
+
             int index = 1; //tracks where we are in the array
             for (int i = 0; i < 7; i++)
             {
@@ -62,15 +65,35 @@ namespace Grid_Lock___Option_3
                 {
                     if (move == "Up")
                     {
-                        if (r - 1 >= 0)
+                        if (r > 0)
                         {
-                            //Makes sure the square that colour will move into is blank
-                            if (gameBoard[r, c].BackColor == Color.Green)
+                            //checks the selected square and checks if it matches the selected colour
+                            if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
-                                if (gameBoard[r - 1, c].BackColor == Color.White)
+                                //checks if the squares it will move into are blank
+                                if (gameBoard[r - 1, c].BackColor == Color.White && gameBoard[r - 1, c - 1].BackColor == Color.White && gameBoard[r + 1, c + 1].BackColor == Color.White) // how do i check both blocks above green to not split it?
                                 {
-                                    gameBoard[r - 1, c].BackColor = Color.FromName(colour);
+                                    gameBoard[r - 1, c].BackColor = Color.Green;
                                     gameBoard[r, c].BackColor = Color.White;
+                                }
+                            }
+                            //if the colour is not green it will run this. this section is needed as green has diffrent movment rules
+                            else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
+                            {
+                                //checks if the currently selected square is the selected colour
+                                if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
+                                {
+                                    //makes sure the square it will move into is blank
+                                    if (gameBoard[r - 1, c].BackColor == Color.White)
+                                    {
+                                        //makes sure the 
+                                        if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
+                                        {
+                                        gameBoard[r, c].BackColor = Color.White; // sets the square to blank
+                                        gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
+                                        }
+
+                                    }
                                 }
                             }
                         }
@@ -81,24 +104,26 @@ namespace Grid_Lock___Option_3
                         {
                             if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
-                                if (gameBoard[r, c - 1].BackColor == Color.White)
+                                if (gameBoard[r, c - 1].BackColor == Color.White && gameBoard[r - 1, c - 1].BackColor == Color.White)
                                 {
                                     gameBoard[r, c].BackColor = Color.White;
-                                    gameBoard[r, c - 1].BackColor = Color.FromName(colour);
+                                    gameBoard[r, c - 1].BackColor = Color.Green;
                                 }
                             }
                             else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
                             {
-                                if (Convert.ToString(gameBoard[r, c + 1].BackColor) == colour && Convert.ToString(gameBoard[r + 1, c].BackColor) != colour)
+                                if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
                                 {
                                     if (gameBoard[r, c - 1].BackColor == Color.White)
                                     {
-                                        gameBoard[r, c].BackColor = Color.White;
-                                        gameBoard[r, c - 1].BackColor = Color.FromName(colour);
+                                        if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                        {
+                                            gameBoard[r, c].BackColor = Color.White;
+                                            gameBoard[r, c - 1].BackColor = Color.FromName(colour);
+                                        }
                                     }
                                 }
                             }
-
                         }
                     }
                 
@@ -106,7 +131,7 @@ namespace Grid_Lock___Option_3
             }
         }
         //deals with Right and Down movment. Scans from bottom left to top right to avoid the blocks riding the checker
-        private void MoveMinus(object sender, EventArgs e, string color, String move)
+        private void MoveMinus(object sender, EventArgs e, string colour, String move)
         {
             bool moveLock = false; //Locks or unlocks movment
             //loops thorugh gameboard checking all pictireboxes one at a time
@@ -120,30 +145,58 @@ namespace Grid_Lock___Option_3
                         {
                             if (c <= 6)
                             {
-                                if (gameBoard[r, c].BackColor == Color.Green)
+                                if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                                 {
                                     if (gameBoard[r, c + 1].BackColor == Color.White)
                                     {
                                             gameBoard[r, c].BackColor = Color.White;
-                                            gameBoard[r, c + 1].BackColor = Color.FromName(color);
+                                            gameBoard[r, c + 1].BackColor = Color.Green;
+                                    }
+                                }
+                                else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
+                                {
+                                    if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
+                                    {
+                                        if (gameBoard[r, c + 1].BackColor == Color.White)
+                                        {
+                                            if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                            {
+                                                gameBoard[r, c].BackColor = Color.White;
+                                                gameBoard[r, c + 1].BackColor = Color.FromName(colour);
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
                         if (move == "Down")
                         {
-                            if (r + 1 <= 5)
+                            if (r <= 6)
                             {
                                 for (int i = 0; i < 4; i++)
                                 {
                                     //Makes sure the square that colour will move into is blank
-                                    if (gameBoard[r, c].BackColor == Color.Green)
+                                    if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                                     {
                                         if (gameBoard[r + 1, c].BackColor == Color.White)
                                         {
-                                            gameBoard[r + 1, c].BackColor = Color.FromName(color);
+                                            gameBoard[r + 1, c].BackColor = Color.FromName(colour);
                                             gameBoard[r, c].BackColor = Color.White;
 
+                                        }
+                                    }
+                                    else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green" && colour != "Green")
+                                    {
+                                        if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
+                                        { 
+                                            if (gameBoard[r + 1, c].BackColor == Color.White)
+                                            {
+                                                if (Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                                {
+                                                    gameBoard[r, c].BackColor = Color.White;
+                                                    gameBoard[r + 1, c].BackColor = Color.FromName(colour);
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -181,6 +234,25 @@ namespace Grid_Lock___Option_3
             string colour = cbColour.Text;
             string move = "Right";
             MoveMinus(this, e, colour, move);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (msec < 10)
+            {
+                msec++;
+            }
+            if (msec == 10)
+            {
+                msec = 0;
+                sec++;
+            }
+            else if (sec == 60)
+            {
+                sec = 0;
+                min++;
+            }
+            stopwatch.Text = Convert.ToString(min) + ":" + Convert.ToString(sec) + ":" + Convert.ToString(msec);
         }
     }
 
