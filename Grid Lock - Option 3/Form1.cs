@@ -24,10 +24,11 @@ namespace Grid_Lock___Option_3
         private void Form1_Load(object sender, EventArgs e)
         {
             stopwatch.Visible = false;
+            gbControls.Visible = false;
             int index = 1; //tracks where we are in the array
             for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < 7; j++) //rename j & i to x&y or something cleaner
+                for (int j = 0; j < 7; j++)
                 {
                     gameBoard[i, j] = (PictureBox)Controls.Find("pb" + (index).ToString(), true)[0];
                     index++;
@@ -56,7 +57,7 @@ namespace Grid_Lock___Option_3
 
         }
         // handels Up and left movment
-        private void MovePlus(object sender, EventArgs e, string colour, String move, bool moveLock)
+        private void MovePlus(object sender, EventArgs e, string colour, string move, bool moveLock)
         {
             //loops thorugh gameboard checking all picture boxes one at a time from top left to bottom right
             for (int r = 0; r < 7; r++) //Rows
@@ -65,39 +66,42 @@ namespace Grid_Lock___Option_3
                 {
                     if (move == "Up" && r > 0)
                     {
-                        //checks the selected square and checks if it matches the selected colour
-                        if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
+                        if (r != 6 && c != 2 || r != 7 && c != 3)
                         {
-                            //checks if the squares it will move into are blank
-                            if (gameBoard[r - 1, c].BackColor == Color.White && gameBoard[r - 1, c - 1].BackColor == Color.White && gameBoard[r + 1, c + 1].BackColor == Color.White) // how do i check both blocks above green to not split it?
+                            //checks the selected square and checks if it matches the selected colour
+                            if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
-                                gameBoard[r - 1, c].BackColor = Color.Green;
-                                gameBoard[r, c].BackColor = Color.White;
-                            }
-                        }
-                        //if the colour is not green it will run this. this section is needed as green has diffrent movment rules
-                        else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
-                        {
-                            //checks if the currently selected square is the selected colour
-                            if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
-                            {
-                                //makes sure the square it will move into is blank
-                                if (gameBoard[r - 1, c].BackColor == Color.White)
+                                //checks if the squares it will move into are blank
+                                if (gameBoard[r - 1, c].BackColor == Color.White && gameBoard[r - 1, c - 1].BackColor == Color.White && gameBoard[r + 1, c + 1].BackColor == Color.White) // how do i check both blocks above green to not split it?
                                 {
-                                    //makes sure the 
-                                    if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
+                                    gameBoard[r - 1, c].BackColor = Color.Green;
+                                    gameBoard[r, c].BackColor = Color.White;
+                                }
+                            }
+                            //if the colour is not green it will run this. this section is needed as green has diffrent movment rules
+                            else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
+                            {
+                                //checks if the currently selected square is the selected colour
+                                if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
+                                {
+                                    //makes sure the square it will move into is blank
+                                    if (gameBoard[r - 1, c].BackColor == Color.White)
                                     {
-                                    gameBoard[r, c].BackColor = Color.White; // sets the square to blank
-                                    gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
-                                    }
+                                        //makes sure the 
+                                        if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
+                                        {
+                                            gameBoard[r, c].BackColor = Color.White; // sets the square to blank
+                                            gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
+                                        }
 
+                                    }
                                 }
                             }
                         }
                     }
-                    if (move == "Left")
+                    if (move == "Left" && c > 0)
                     {
-                        if (c > 0)
+                        if (r != 6 && c != 2 || r != 7 && c != 3)
                         {
                             if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
@@ -206,13 +210,12 @@ namespace Grid_Lock___Option_3
                 }
             }
         }
-        
-        private void btnUp_Click(object sender, EventArgs e)
+        private void btnUp_Click(object sender, EventArgs e) //?? how can i use keys to do this? pressing any key automaticaly selects and uses the cb and does not read the input to use
         {
             string colour = cbColour.Text;
             string move = "Up";
             bool moveLock = false;
-            MovePlus(this, e, colour, move, moveLock); //?? why does this care about paramters not sent to it? also occours in other MovePlus senders
+            MovePlus(this, e, colour, move, moveLock);
         }
         private void btnLeft_Click(object sender, EventArgs e)
         {
@@ -221,7 +224,6 @@ namespace Grid_Lock___Option_3
             bool moveLock = false;
             MovePlus(this, e, colour, move, moveLock);
         }
-
         private void btnDown_Click(object sender, EventArgs e)
         {
             string colour = cbColour.Text;
@@ -234,7 +236,6 @@ namespace Grid_Lock___Option_3
             string move = "Right";
             MoveMinus(this, e, colour, move);
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (msec < 10)
@@ -253,10 +254,9 @@ namespace Grid_Lock___Option_3
             }
             stopwatch.Text = Convert.ToString(min) + ":" + Convert.ToString(sec) + ":" + Convert.ToString(msec);
         }
-
         private void btnBegin_Click(object sender, EventArgs e)
         {
-            bool moveLock = false; //?? this needs to be only refrenced here and no where else otherwide movment can take place before game has started, is there a way to do wthis without gobal varibles?
+            bool moveLock = false;
             string colour = null;
             string move = null;
             MovePlus(this, e, colour, move, moveLock);
@@ -265,7 +265,31 @@ namespace Grid_Lock___Option_3
             min = 0;
             stopwatch.Visible = true;
             btnBegin.Visible = false;
-        }
+        } //?? only happy if all thigns sending to it send the same values, is there a way around this iwthout using global variables?
+
+        private void btnDarkSwitch_Click(object sender, EventArgs e)
+        {
+            if (btnDarkSwitch.Text == "Dark Mode")
+            {
+                btnDarkSwitch.Text = "Light Mode";
+                BackColor = SystemColors.Control;
+                lblColourSelect.ForeColor = SystemColors.ControlText;
+                gbGameArea.ForeColor = SystemColors.ControlText;
+                gbControls.ForeColor = SystemColors.ControlText;
+                btnBegin.ForeColor = SystemColors.ControlText;
+                btnBegin.BackColor = SystemColors.Control;
+            }
+            else if (btnDarkSwitch.Text == "Light Mode")
+            {
+                btnDarkSwitch.Text = "Dark Mode";
+                BackColor = Color.FromArgb(40, 40, 40);
+                lblColourSelect.ForeColor = SystemColors.Control;
+                gbGameArea.ForeColor = SystemColors.Control;
+                gbControls.ForeColor = SystemColors.Control;
+                btnBegin.ForeColor= SystemColors.Control;
+                btnBegin.BackColor = Color.FromArgb(40, 40, 40);
+            }
+        } //?? how can i remove btnBegin from group box? this messes with outline in dark/light mode
     }
 
 }

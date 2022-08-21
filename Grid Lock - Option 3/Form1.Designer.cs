@@ -33,7 +33,7 @@
             this.btnRight = new System.Windows.Forms.Button();
             this.pb8 = new System.Windows.Forms.PictureBox();
             this.cbColour = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblColourSelect = new System.Windows.Forms.Label();
             this.gbGameArea = new System.Windows.Forms.GroupBox();
             this.pb48 = new System.Windows.Forms.PictureBox();
             this.pb47 = new System.Windows.Forms.PictureBox();
@@ -86,10 +86,11 @@
             this.btnUp = new System.Windows.Forms.Button();
             this.btnLeft = new System.Windows.Forms.Button();
             this.gbControls = new System.Windows.Forms.GroupBox();
+            this.btnBegin = new System.Windows.Forms.Button();
             this.lblStopWatch = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.stopwatch = new System.Windows.Forms.Label();
-            this.btnBegin = new System.Windows.Forms.Button();
+            this.btnDarkSwitch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pb8)).BeginInit();
             this.gbGameArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb48)).BeginInit();
@@ -193,14 +194,15 @@
             this.cbColour.Size = new System.Drawing.Size(237, 21);
             this.cbColour.TabIndex = 14;
             // 
-            // label1
+            // lblColourSelect
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(134, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Select a colour to move";
+            this.lblColourSelect.AutoSize = true;
+            this.lblColourSelect.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblColourSelect.Location = new System.Drawing.Point(134, 21);
+            this.lblColourSelect.Name = "lblColourSelect";
+            this.lblColourSelect.Size = new System.Drawing.Size(119, 13);
+            this.lblColourSelect.TabIndex = 15;
+            this.lblColourSelect.Text = "Select a colour to move";
             // 
             // gbGameArea
             // 
@@ -671,6 +673,7 @@
             // 
             // gbControls
             // 
+            this.gbControls.Controls.Add(this.btnBegin);
             this.gbControls.Controls.Add(this.btnLeft);
             this.gbControls.Controls.Add(this.btnRight);
             this.gbControls.Controls.Add(this.btnUp);
@@ -684,6 +687,17 @@
             this.gbControls.TabIndex = 18;
             this.gbControls.TabStop = false;
             this.gbControls.Text = "Controls";
+            // 
+            // btnBegin
+            // 
+            this.btnBegin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnBegin.Location = new System.Drawing.Point(0, 0);
+            this.btnBegin.Name = "btnBegin";
+            this.btnBegin.Size = new System.Drawing.Size(188, 199);
+            this.btnBegin.TabIndex = 21;
+            this.btnBegin.Text = "Press to begin";
+            this.btnBegin.UseVisualStyleBackColor = true;
+            this.btnBegin.Click += new System.EventHandler(this.btnBegin_Click);
             // 
             // lblStopWatch
             // 
@@ -710,28 +724,31 @@
             this.stopwatch.Size = new System.Drawing.Size(0, 25);
             this.stopwatch.TabIndex = 20;
             // 
-            // btnBegin
+            // btnDarkSwitch
             // 
-            this.btnBegin.Location = new System.Drawing.Point(450, 75);
-            this.btnBegin.Name = "btnBegin";
-            this.btnBegin.Size = new System.Drawing.Size(87, 42);
-            this.btnBegin.TabIndex = 21;
-            this.btnBegin.Text = "Press to begin";
-            this.btnBegin.UseVisualStyleBackColor = true;
-            this.btnBegin.Click += new System.EventHandler(this.btnBegin_Click);
+            this.btnDarkSwitch.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnDarkSwitch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnDarkSwitch.Location = new System.Drawing.Point(612, 5);
+            this.btnDarkSwitch.Name = "btnDarkSwitch";
+            this.btnDarkSwitch.Size = new System.Drawing.Size(69, 28);
+            this.btnDarkSwitch.TabIndex = 21;
+            this.btnDarkSwitch.Text = "Dark Mode";
+            this.btnDarkSwitch.UseVisualStyleBackColor = true;
+            this.btnDarkSwitch.Click += new System.EventHandler(this.btnDarkSwitch_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(702, 411);
-            this.Controls.Add(this.btnBegin);
+            this.Controls.Add(this.btnDarkSwitch);
             this.Controls.Add(this.stopwatch);
             this.Controls.Add(this.lblStopWatch);
             this.Controls.Add(this.gbControls);
             this.Controls.Add(this.gbGameArea);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblColourSelect);
             this.Controls.Add(this.cbColour);
             this.Name = "Form1";
             this.Text = "Grid Lock";
@@ -797,7 +814,7 @@
         private System.Windows.Forms.Button btnRight;
         private System.Windows.Forms.PictureBox pb8;
         private System.Windows.Forms.ComboBox cbColour;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblColourSelect;
         private System.Windows.Forms.GroupBox gbGameArea;
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnLeft;
@@ -854,6 +871,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label stopwatch;
         private System.Windows.Forms.Button btnBegin;
+        private System.Windows.Forms.Button btnDarkSwitch;
     }
 }
 
