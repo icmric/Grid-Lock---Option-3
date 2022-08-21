@@ -89,6 +89,7 @@
             this.lblStopWatch = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.stopwatch = new System.Windows.Forms.Label();
+            this.btnBegin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pb8)).BeginInit();
             this.gbGameArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb48)).BeginInit();
@@ -709,12 +710,23 @@
             this.stopwatch.Size = new System.Drawing.Size(0, 25);
             this.stopwatch.TabIndex = 20;
             // 
+            // btnBegin
+            // 
+            this.btnBegin.Location = new System.Drawing.Point(450, 75);
+            this.btnBegin.Name = "btnBegin";
+            this.btnBegin.Size = new System.Drawing.Size(87, 42);
+            this.btnBegin.TabIndex = 21;
+            this.btnBegin.Text = "Press to begin";
+            this.btnBegin.UseVisualStyleBackColor = true;
+            this.btnBegin.Click += new System.EventHandler(this.btnBegin_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(702, 411);
+            this.Controls.Add(this.btnBegin);
             this.Controls.Add(this.stopwatch);
             this.Controls.Add(this.lblStopWatch);
             this.Controls.Add(this.gbControls);
@@ -841,6 +853,7 @@
         private System.Windows.Forms.Label lblStopWatch;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label stopwatch;
+        private System.Windows.Forms.Button btnBegin;
     }
 }
 

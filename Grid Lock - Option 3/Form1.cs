@@ -23,7 +23,7 @@ namespace Grid_Lock___Option_3
        public int min;
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            stopwatch.Visible = false;
             int index = 1; //tracks where we are in the array
             for (int i = 0; i < 7; i++)
             {
@@ -56,44 +56,41 @@ namespace Grid_Lock___Option_3
 
         }
         // handels Up and left movment
-        private void MovePlus(object sender, EventArgs e, string colour, String move)
+        private void MovePlus(object sender, EventArgs e, string colour, String move, bool moveLock)
         {
             //loops thorugh gameboard checking all picture boxes one at a time from top left to bottom right
             for (int r = 0; r < 7; r++) //Rows
             {
                 for (int c = 0; c < 7; c++) //Coloums
                 {
-                    if (move == "Up")
+                    if (move == "Up" && r > 0)
                     {
-                        if (r > 0)
+                        //checks the selected square and checks if it matches the selected colour
+                        if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                         {
-                            //checks the selected square and checks if it matches the selected colour
-                            if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
+                            //checks if the squares it will move into are blank
+                            if (gameBoard[r - 1, c].BackColor == Color.White && gameBoard[r - 1, c - 1].BackColor == Color.White && gameBoard[r + 1, c + 1].BackColor == Color.White) // how do i check both blocks above green to not split it?
                             {
-                                //checks if the squares it will move into are blank
-                                if (gameBoard[r - 1, c].BackColor == Color.White && gameBoard[r - 1, c - 1].BackColor == Color.White && gameBoard[r + 1, c + 1].BackColor == Color.White) // how do i check both blocks above green to not split it?
-                                {
-                                    gameBoard[r - 1, c].BackColor = Color.Green;
-                                    gameBoard[r, c].BackColor = Color.White;
-                                }
+                                gameBoard[r - 1, c].BackColor = Color.Green;
+                                gameBoard[r, c].BackColor = Color.White;
                             }
-                            //if the colour is not green it will run this. this section is needed as green has diffrent movment rules
-                            else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
+                        }
+                        //if the colour is not green it will run this. this section is needed as green has diffrent movment rules
+                        else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
+                        {
+                            //checks if the currently selected square is the selected colour
+                            if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
                             {
-                                //checks if the currently selected square is the selected colour
-                                if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
+                                //makes sure the square it will move into is blank
+                                if (gameBoard[r - 1, c].BackColor == Color.White)
                                 {
-                                    //makes sure the square it will move into is blank
-                                    if (gameBoard[r - 1, c].BackColor == Color.White)
+                                    //makes sure the 
+                                    if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
                                     {
-                                        //makes sure the 
-                                        if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
-                                        {
-                                        gameBoard[r, c].BackColor = Color.White; // sets the square to blank
-                                        gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
-                                        }
-
+                                    gameBoard[r, c].BackColor = Color.White; // sets the square to blank
+                                    gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
                                     }
+
                                 }
                             }
                         }
@@ -214,13 +211,15 @@ namespace Grid_Lock___Option_3
         {
             string colour = cbColour.Text;
             string move = "Up";
-            MovePlus(this, e, colour, move);
+            bool moveLock = false;
+            MovePlus(this, e, colour, move, moveLock); //?? why does this care about paramters not sent to it? also occours in other MovePlus senders
         }
         private void btnLeft_Click(object sender, EventArgs e)
         {
             string colour = cbColour.Text;
             string move = "Left";
-            MovePlus(this, e, colour, move);
+            bool moveLock = false;
+            MovePlus(this, e, colour, move, moveLock);
         }
 
         private void btnDown_Click(object sender, EventArgs e)
@@ -253,6 +252,19 @@ namespace Grid_Lock___Option_3
                 min++;
             }
             stopwatch.Text = Convert.ToString(min) + ":" + Convert.ToString(sec) + ":" + Convert.ToString(msec);
+        }
+
+        private void btnBegin_Click(object sender, EventArgs e)
+        {
+            bool moveLock = false; //?? this needs to be only refrenced here and no where else otherwide movment can take place before game has started, is there a way to do wthis without gobal varibles?
+            string colour = null;
+            string move = null;
+            MovePlus(this, e, colour, move, moveLock);
+            msec = 0;
+            sec = 0;
+            min = 0;
+            stopwatch.Visible = true;
+            btnBegin.Visible = false;
         }
     }
 
