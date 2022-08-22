@@ -304,8 +304,10 @@ namespace Grid_Lock___Option_3
 
         private void btnLevel_Click(object sender, EventArgs e, string lvlComplete)
         {
-            if (btnLevel.Text == "Level 1" || lvlComplete == "true")
+            if (btnLevel.Text == "Level 1")
             {
+                if (lvlComplete == "true")
+                {
                 List<string> startingConfigArray = new List<string>();
                 StreamReader reader = new StreamReader(@"level_2.csv");
                 string line;
@@ -328,11 +330,15 @@ namespace Grid_Lock___Option_3
                 }
                 btnLevel.Text = "Level 2";
                 btnBegin.Visible = true;
+                }
+
             }
             else if (btnLevel.Text == "Level 2" || lvlComplete == "true")
             {
+                if (lvlComplete == "true")
+                {
                 List<string> startingConfigArray = new List<string>();
-                StreamReader reader = new StreamReader(@"level_3.csv");
+                StreamReader reader = new StreamReader(@"StartingConfig.csv");
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
@@ -352,6 +358,8 @@ namespace Grid_Lock___Option_3
                 }
                 btnLevel.Text = "Level 1"; // change if lvl 3 is added
                 btnBegin.Visible = true;
+                }
+
             }
             msec = 0;
             sec = 0;
