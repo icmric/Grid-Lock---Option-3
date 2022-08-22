@@ -55,7 +55,7 @@ namespace Grid_Lock___Option_3
                 }
             }
 
-        }
+        } //?? can i make a subprogram that checks for a picturebox being pressed? like "private void pb + index" type thing
         private void MovePlus(object sender, EventArgs e, string colour, string move)
         {
             //loops thorugh gameboard checking all picture boxes one at a time from top left to bottom right
@@ -364,7 +364,7 @@ namespace Grid_Lock___Option_3
             msec = 0;
             sec = 0;
             min = 0;
-        } 
+        }
     }
 }
 

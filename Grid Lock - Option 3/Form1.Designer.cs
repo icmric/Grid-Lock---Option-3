@@ -775,7 +775,7 @@
             // 
             this.lblCenter.AutoSize = true;
             this.lblCenter.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblCenter.Location = new System.Drawing.Point(435, 215);
+            this.lblCenter.Location = new System.Drawing.Point(432, 252);
             this.lblCenter.Name = "lblCenter";
             this.lblCenter.Size = new System.Drawing.Size(60, 13);
             this.lblCenter.TabIndex = 25;
