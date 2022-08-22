@@ -91,6 +91,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.stopwatch = new System.Windows.Forms.Label();
             this.btnDarkSwitch = new System.Windows.Forms.Button();
+            this.btnLevel = new System.Windows.Forms.Button();
+            this.lblTopind = new System.Windows.Forms.Label();
+            this.lblBottomInd = new System.Windows.Forms.Label();
+            this.lblCenter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb8)).BeginInit();
             this.gbGameArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb48)).BeginInit();
@@ -679,7 +683,7 @@
             this.gbControls.Controls.Add(this.btnUp);
             this.gbControls.Controls.Add(this.btnDown);
             this.gbControls.ForeColor = System.Drawing.SystemColors.Control;
-            this.gbControls.Location = new System.Drawing.Point(460, 147);
+            this.gbControls.Location = new System.Drawing.Point(605, 162);
             this.gbControls.Margin = new System.Windows.Forms.Padding(2);
             this.gbControls.Name = "gbControls";
             this.gbControls.Padding = new System.Windows.Forms.Padding(2);
@@ -691,9 +695,9 @@
             // btnBegin
             // 
             this.btnBegin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnBegin.Location = new System.Drawing.Point(0, 0);
+            this.btnBegin.Location = new System.Drawing.Point(-17, 0);
             this.btnBegin.Name = "btnBegin";
-            this.btnBegin.Size = new System.Drawing.Size(188, 199);
+            this.btnBegin.Size = new System.Drawing.Size(201, 199);
             this.btnBegin.TabIndex = 21;
             this.btnBegin.Text = "Press to begin";
             this.btnBegin.UseVisualStyleBackColor = true;
@@ -728,7 +732,7 @@
             // 
             this.btnDarkSwitch.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnDarkSwitch.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnDarkSwitch.Location = new System.Drawing.Point(612, 5);
+            this.btnDarkSwitch.Location = new System.Drawing.Point(751, 13);
             this.btnDarkSwitch.Name = "btnDarkSwitch";
             this.btnDarkSwitch.Size = new System.Drawing.Size(69, 28);
             this.btnDarkSwitch.TabIndex = 21;
@@ -736,13 +740,58 @@
             this.btnDarkSwitch.UseVisualStyleBackColor = true;
             this.btnDarkSwitch.Click += new System.EventHandler(this.btnDarkSwitch_Click);
             // 
+            // btnLevel
+            // 
+            this.btnLevel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnLevel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLevel.Location = new System.Drawing.Point(649, 13);
+            this.btnLevel.Name = "btnLevel";
+            this.btnLevel.Size = new System.Drawing.Size(69, 28);
+            this.btnLevel.TabIndex = 22;
+            this.btnLevel.Text = "Level 1";
+            this.btnLevel.UseVisualStyleBackColor = true;
+            // 
+            // lblTopind
+            // 
+            this.lblTopind.AutoSize = true;
+            this.lblTopind.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTopind.Location = new System.Drawing.Point(380, 202);
+            this.lblTopind.Name = "lblTopind";
+            this.lblTopind.Size = new System.Drawing.Size(55, 13);
+            this.lblTopind.TabIndex = 23;
+            this.lblTopind.Text = "________";
+            // 
+            // lblBottomInd
+            // 
+            this.lblBottomInd.AutoSize = true;
+            this.lblBottomInd.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblBottomInd.Location = new System.Drawing.Point(380, 287);
+            this.lblBottomInd.Name = "lblBottomInd";
+            this.lblBottomInd.Size = new System.Drawing.Size(55, 13);
+            this.lblBottomInd.TabIndex = 24;
+            this.lblBottomInd.Text = "________";
+            // 
+            // lblCenter
+            // 
+            this.lblCenter.AutoSize = true;
+            this.lblCenter.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblCenter.Location = new System.Drawing.Point(435, 215);
+            this.lblCenter.Name = "lblCenter";
+            this.lblCenter.Size = new System.Drawing.Size(60, 13);
+            this.lblCenter.TabIndex = 25;
+            this.lblCenter.Text = "Move Here";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(702, 411);
+            this.ClientSize = new System.Drawing.Size(832, 411);
+            this.Controls.Add(this.lblCenter);
+            this.Controls.Add(this.lblBottomInd);
+            this.Controls.Add(this.lblTopind);
+            this.Controls.Add(this.btnLevel);
             this.Controls.Add(this.btnDarkSwitch);
             this.Controls.Add(this.stopwatch);
             this.Controls.Add(this.lblStopWatch);
@@ -872,6 +921,10 @@
         private System.Windows.Forms.Label stopwatch;
         private System.Windows.Forms.Button btnBegin;
         private System.Windows.Forms.Button btnDarkSwitch;
+        private System.Windows.Forms.Button btnLevel;
+        private System.Windows.Forms.Label lblTopind;
+        private System.Windows.Forms.Label lblBottomInd;
+        private System.Windows.Forms.Label lblCenter;
     }
 }
 
