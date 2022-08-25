@@ -22,6 +22,7 @@ namespace Grid_Lock___Option_3 // Green #008000
         public int sec;
         public int min;
         public bool moveLock = false;
+        public bool lvlComplete = true; // 
         private void Form1_Load(object sender, EventArgs e)
         {
             stopwatch.Visible = false;
@@ -59,11 +60,11 @@ namespace Grid_Lock___Option_3 // Green #008000
         private void MovePlus(object sender, EventArgs e, string colour, string move)
         {
             //loops thorugh gameboard checking all picture boxes one at a time from top left to bottom right
-            for (int r = 0; r < 6; r++) //Rows
+            for (int r = 0; r <= 6; r++) //Rows
             {
-                for (int c = 0; c < 6; c++) //Coloums
+                for (int c = 0; c <= 6; c++) //Coloums
                 {
-                    if (move == "Up" && r > 0)
+                    if (move == "Up" && r <= 7)
                     {
                         if (moveLock == false)
                            {
@@ -118,12 +119,11 @@ namespace Grid_Lock___Option_3 // Green #008000
                                 {
                                     if (gameBoard[r, c - 1].BackColor == Color.White)
                                     {
-                                        if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                        if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
                                         {
                                             gameBoard[r, c].BackColor = Color.White;
-                                            gameBoard[r, c - 1].BackColor = Color.FromName(colour);
+                                            gameBoard[r, c].BackColor = Color.FromName(colour);
                                         }
-                                        //if (Convert.ToString(gameBoard[r - 2, c].BackColor) == )
                                     }
                                 }
                             }
@@ -160,7 +160,7 @@ namespace Grid_Lock___Option_3 // Green #008000
                                 {
                                     if (gameBoard[r, c + 1].BackColor == Color.White)
                                     {
-                                        if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                        if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
                                         {
                                             gameBoard[r, c].BackColor = Color.White;
                                             gameBoard[r, c + 1].BackColor = Color.FromName(colour);
@@ -250,8 +250,7 @@ namespace Grid_Lock___Option_3 // Green #008000
             {
                 moveLock = true;
                 MessageBox.Show("Congrats, you won! you completed the level in " + min + " minutes, " + sec + " secconds and " + msec + " milisecconds. Close this window to progress to the next level");
-                string lvlComplete = "true";
-                btnLevelChange_Click(this, e, lvlComplete);
+                lvlComplete = true;
             }
         }
         private void btnBegin_Click(object sender, EventArgs e)
@@ -297,12 +296,11 @@ namespace Grid_Lock___Option_3 // Green #008000
                 lblCenter.ForeColor = SystemColors.Control;
             }
         }
-
-        private void btnLevelChange_Click(object sender, EventArgs e, string lvlComplete)
+        private void btnLevelChange_Click(object sender, EventArgs e)
         {
             if (btnLevelChange.Text == "Level 1")
             {
-                if (lvlComplete == "true")
+                if (lvlComplete == true)
                 {
                     List<string> startingConfigArray = new List<string>();
                     StreamReader reader = new StreamReader(@"level_2.csv");
@@ -329,9 +327,9 @@ namespace Grid_Lock___Option_3 // Green #008000
                 }
 
             }
-            else if (btnLevelChange.Text == "Level 2" || lvlComplete == "true")
+            else if (btnLevelChange.Text == "Level 2")
             {
-                if (lvlComplete == "true")
+                if (lvlComplete == true)
                 {
                     List<string> startingConfigArray = new List<string>();
                     StreamReader reader = new StreamReader(@"StartingConfig.csv");

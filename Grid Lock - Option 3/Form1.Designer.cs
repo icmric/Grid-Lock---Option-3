@@ -790,7 +790,7 @@
             this.btnLevelChange.TabIndex = 26;
             this.btnLevelChange.Text = "Level 1";
             this.btnLevelChange.UseVisualStyleBackColor = true;
-      //      this.btnLevelChange.Click += new System.EventHandler(this.btnLevelChange_Click);
+            this.btnLevelChange.Click += new System.EventHandler(this.btnLevelChange_Click);
             // 
             // Form1
             // 
