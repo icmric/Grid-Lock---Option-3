@@ -293,11 +293,12 @@ namespace Grid_Lock___Option_3 // Green #008000
                 min++;
             }
             stopwatch.Text = Convert.ToString(min) + ":" + Convert.ToString(sec) + ":" + Convert.ToString(msec);
-            if (Convert.ToString(gameBoard[3, 6].BackColor) == "Color " + "[" + "Green" + "]" && moveLock == false)
+            if (Convert.ToString(gameBoard[3, 6].BackColor) == "Color " + "[" + "Green" + "]" && Convert.ToString(gameBoard[4, 6].BackColor) == "Color " + "[" + "Green" + "]" && moveLock == false)
             {
                 moveLock = true;
                 MessageBox.Show("Congrats, you won! you completed the level in " + min + " minutes, " + sec + " secconds and " + msec + " milisecconds. Close this window to progress to the next level");
                 lvlComplete = true;
+                btnLevelChange_Click(this, e);
             }
         }
         private void btnBegin_Click(object sender, EventArgs e)
