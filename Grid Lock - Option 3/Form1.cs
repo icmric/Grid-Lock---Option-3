@@ -64,7 +64,7 @@ namespace Grid_Lock___Option_3 // Green #008000
             {
                 for (int c = 0; c <= 6; c++) //Coloums
                 {
-                    if (move == "Up" && r <= 7)
+                    if (move == "Up" && r > 0)
                     {
                         if (moveLock == false)
                            {
@@ -72,7 +72,7 @@ namespace Grid_Lock___Option_3 // Green #008000
                             if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
                                 //checks if the squares it will move into are blank
-                                if (gameBoard[r - 1, c].BackColor == Color.White && gameBoard[r - 1, c + 1].BackColor == Color.White && gameBoard[r, c - 1].BackColor != Color.Green)
+                                if (gameBoard[r - 1, c].BackColor == Color.White && gameBoard[r - 1, c + 1].BackColor == Color.White)
                                 {
                                     gameBoard[r - 1, c].BackColor = Color.Green;
                                     gameBoard[r, c].BackColor = Color.White;
@@ -89,10 +89,29 @@ namespace Grid_Lock___Option_3 // Green #008000
                                     //makes sure the square it will move into is blank
                                     if (gameBoard[r - 1, c].BackColor == Color.White)
                                     {
-                                        if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                        if (c == 0)
                                         {
-                                            gameBoard[r, c].BackColor = Color.White; // sets the square to blank
-                                            gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
+                                            if (Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
+                                            {
+                                                gameBoard[r, c].BackColor = Color.White; // sets the square to blank
+                                                gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
+                                            }
+                                        }
+                                        else if (c == 6)
+                                        {
+                                            if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]")
+                                            {
+                                                gameBoard[r, c].BackColor = Color.White; // sets the square to blank
+                                                gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
+                                            }
+                                        }
+                                        else if (c > 0 && c < 6)
+                                        {
+                                            if (Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]" || Convert.ToString(gameBoard[r, c - 1].BackColor) == "Color " + "[" + colour + "]")
+                                            {
+                                                gameBoard[r, c].BackColor = Color.White; // sets the square to blank
+                                                gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
+                                            }
                                         }
                                     }
                                 }
@@ -119,11 +138,31 @@ namespace Grid_Lock___Option_3 // Green #008000
                                 {
                                     if (gameBoard[r, c - 1].BackColor == Color.White)
                                     {
-                                        if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
+                                        if (c == 0)
                                         {
-                                            gameBoard[r, c].BackColor = Color.White;
-                                            gameBoard[r, c].BackColor = Color.FromName(colour);
+                                            if (Convert.ToString(gameBoard[r, c + 1].BackColor) == "Color " + "[" + colour + "]")
+                                            {
+                                                gameBoard[r, c - 1].BackColor = Color.FromName(colour);
+                                                gameBoard[r, c].BackColor = Color.White;
+                                            }
                                         }
+                                        else if (c == 6)
+                                        {
+                                            if (Convert.ToString(gameBoard[r, c - 1].BackColor) == "Color " + "[" + colour + "]" || Convert.ToString(gameBoard[r, c - 2].BackColor) == "Color " + "[" + colour + "]")
+                                            {
+                                                gameBoard[r, c - 1].BackColor = Color.FromName(colour);
+                                                gameBoard[r, c].BackColor = Color.White;
+                                            }
+                                        }
+                                        else if (c > 0 && c < 6)
+                                        {
+                                            if (Convert.ToString(gameBoard[r, c - 1].BackColor) == "Color " + "[" + colour + "]" || Convert.ToString(gameBoard[r, c + 1].BackColor) == "Color " + "[" + colour + "]" || Convert.ToString(gameBoard[r, c - 2].BackColor) == "Color " + "[" + colour + "]")
+                                            {
+                                                gameBoard[r, c - 1].BackColor = Color.FromName(colour);
+                                                gameBoard[r, c].BackColor = Color.White;
+                                            }
+                                        }
+                                       
                                     }
                                 }
                             }
@@ -140,7 +179,7 @@ namespace Grid_Lock___Option_3 // Green #008000
             {
                 for (int c = 6; c >= 0; c--) //Coloums
                 {
-                    if (move == "Right" && c <= 5)
+                    if (move == "Right" && c + 1 < 7)
                     {
                         if (moveLock == false)
                         {
@@ -160,11 +199,19 @@ namespace Grid_Lock___Option_3 // Green #008000
                                 {
                                     if (gameBoard[r, c + 1].BackColor == Color.White)
                                     {
-                                        if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
-                                        {
-                                            gameBoard[r, c].BackColor = Color.White;
-                                            gameBoard[r, c + 1].BackColor = Color.FromName(colour);
+                                       if (r > 0 &&  r < 6 && c > 0 && c < 6)
+                                       {
+                                            if (Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]" || Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                            {
+                                                gameBoard[r, c + 1].BackColor = Color.FromName(colour);
+                                                gameBoard[r, c].BackColor = Color.White;
+                                            }
                                         }
+                                            if (Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]" || Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                            {
+                                                gameBoard[r, c + 1].BackColor = Color.FromName(colour);
+                                                gameBoard[r, c].BackColor = Color.White;
+                                            }
                                     }
                                 }
                             }
@@ -191,7 +238,7 @@ namespace Grid_Lock___Option_3 // Green #008000
                                 {
                                     if (gameBoard[r + 1, c].BackColor == Color.White)
                                     {
-                                        if (Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                        if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
                                         {
                                             gameBoard[r, c].BackColor = Color.White;
                                             gameBoard[r + 1, c].BackColor = Color.FromName(colour);
