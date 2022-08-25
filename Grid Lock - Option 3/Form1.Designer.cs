@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnDown = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.pb8 = new System.Windows.Forms.PictureBox();
@@ -91,10 +92,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.stopwatch = new System.Windows.Forms.Label();
             this.btnDarkSwitch = new System.Windows.Forms.Button();
-            this.btnLevel = new System.Windows.Forms.Button();
             this.lblTopind = new System.Windows.Forms.Label();
             this.lblBottomInd = new System.Windows.Forms.Label();
             this.lblCenter = new System.Windows.Forms.Label();
+            this.btnLevelChange = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pb8)).BeginInit();
             this.gbGameArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb48)).BeginInit();
@@ -150,6 +151,8 @@
             // 
             // btnDown
             // 
+            this.btnDown.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDown.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnDown.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnDown.Location = new System.Drawing.Point(65, 127);
@@ -157,11 +160,13 @@
             this.btnDown.Size = new System.Drawing.Size(50, 50);
             this.btnDown.TabIndex = 1;
             this.btnDown.Text = "s";
-            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.UseVisualStyleBackColor = false;
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnRight
             // 
+            this.btnRight.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRight.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnRight.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRight.Location = new System.Drawing.Point(121, 71);
@@ -169,7 +174,7 @@
             this.btnRight.Size = new System.Drawing.Size(50, 50);
             this.btnRight.TabIndex = 3;
             this.btnRight.Text = "w";
-            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.UseVisualStyleBackColor = false;
             this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // pb8
@@ -191,7 +196,7 @@
             "Gray",
             "Purple",
             "Orange",
-            "Black",
+            "Blue",
             "Pink"});
             this.cbColour.Location = new System.Drawing.Point(86, 37);
             this.cbColour.Name = "cbColour";
@@ -653,6 +658,8 @@
             // 
             // btnUp
             // 
+            this.btnUp.BackColor = System.Drawing.SystemColors.Control;
+            this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUp.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnUp.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnUp.Location = new System.Drawing.Point(65, 18);
@@ -660,11 +667,13 @@
             this.btnUp.Size = new System.Drawing.Size(50, 50);
             this.btnUp.TabIndex = 0;
             this.btnUp.Text = "r";
-            this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.UseVisualStyleBackColor = false;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // btnLeft
             // 
+            this.btnLeft.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft.Font = new System.Drawing.Font("Wingdings 3", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnLeft.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnLeft.Location = new System.Drawing.Point(8, 71);
@@ -672,7 +681,7 @@
             this.btnLeft.Size = new System.Drawing.Size(50, 50);
             this.btnLeft.TabIndex = 4;
             this.btnLeft.Text = "v";
-            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.UseVisualStyleBackColor = false;
             this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // gbControls
@@ -740,17 +749,6 @@
             this.btnDarkSwitch.UseVisualStyleBackColor = true;
             this.btnDarkSwitch.Click += new System.EventHandler(this.btnDarkSwitch_Click);
             // 
-            // btnLevel
-            // 
-            this.btnLevel.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnLevel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnLevel.Location = new System.Drawing.Point(649, 13);
-            this.btnLevel.Name = "btnLevel";
-            this.btnLevel.Size = new System.Drawing.Size(69, 28);
-            this.btnLevel.TabIndex = 22;
-            this.btnLevel.Text = "Level 1";
-            this.btnLevel.UseVisualStyleBackColor = true;
-            // 
             // lblTopind
             // 
             this.lblTopind.AutoSize = true;
@@ -774,12 +772,25 @@
             // lblCenter
             // 
             this.lblCenter.AutoSize = true;
+            this.lblCenter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCenter.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblCenter.Location = new System.Drawing.Point(432, 252);
+            this.lblCenter.Location = new System.Drawing.Point(425, 243);
             this.lblCenter.Name = "lblCenter";
-            this.lblCenter.Size = new System.Drawing.Size(60, 13);
+            this.lblCenter.Size = new System.Drawing.Size(70, 25);
             this.lblCenter.TabIndex = 25;
-            this.lblCenter.Text = "Move Here";
+            this.lblCenter.Text = "Finish";
+            // 
+            // btnLevelChange
+            // 
+            this.btnLevelChange.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnLevelChange.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLevelChange.Location = new System.Drawing.Point(670, 13);
+            this.btnLevelChange.Name = "btnLevelChange";
+            this.btnLevelChange.Size = new System.Drawing.Size(69, 28);
+            this.btnLevelChange.TabIndex = 26;
+            this.btnLevelChange.Text = "Level 1";
+            this.btnLevelChange.UseVisualStyleBackColor = true;
+      //      this.btnLevelChange.Click += new System.EventHandler(this.btnLevelChange_Click);
             // 
             // Form1
             // 
@@ -788,10 +799,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(832, 411);
+            this.Controls.Add(this.btnLevelChange);
             this.Controls.Add(this.lblCenter);
             this.Controls.Add(this.lblBottomInd);
             this.Controls.Add(this.lblTopind);
-            this.Controls.Add(this.btnLevel);
             this.Controls.Add(this.btnDarkSwitch);
             this.Controls.Add(this.stopwatch);
             this.Controls.Add(this.lblStopWatch);
@@ -799,6 +810,7 @@
             this.Controls.Add(this.gbGameArea);
             this.Controls.Add(this.lblColourSelect);
             this.Controls.Add(this.cbColour);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Grid Lock";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -921,10 +933,10 @@
         private System.Windows.Forms.Label stopwatch;
         private System.Windows.Forms.Button btnBegin;
         private System.Windows.Forms.Button btnDarkSwitch;
-        private System.Windows.Forms.Button btnLevel;
         private System.Windows.Forms.Label lblTopind;
         private System.Windows.Forms.Label lblBottomInd;
         private System.Windows.Forms.Label lblCenter;
+        private System.Windows.Forms.Button btnLevelChange;
     }
 }
 

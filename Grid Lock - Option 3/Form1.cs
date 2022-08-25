@@ -25,21 +25,21 @@ namespace Grid_Lock___Option_3 // Green #008000
         private void Form1_Load(object sender, EventArgs e)
         {
             stopwatch.Visible = false;
-            int index = 1; //tracks where we are in the array
+            int index = 1; //changes what picturebox is selected
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    gameBoard[i, j] = (PictureBox)Controls.Find("pb" + (index).ToString(), true)[0];
+                    gameBoard[i, j] = (PictureBox)Controls.Find("pb" + (index).ToString(), true)[0]; //puts each picturebox into an array
                     index++;
                 }
             }
             List<string> startingConfigArray = new List<string>();
-            StreamReader reader = new StreamReader(@"StartingConfig.csv");
+            StreamReader reader = new StreamReader(@"StartingConfig.csv"); //takes in the .csv file
             string line;
             while ((line = reader.ReadLine()) != null)
             {
-                startingConfigArray.Add(line);
+                startingConfigArray.Add(line); //puts the .csv file into a list
             }
 
             int startingConfigindex = 0;
@@ -49,32 +49,34 @@ namespace Grid_Lock___Option_3 // Green #008000
             {
                 for (int c = 0; c < 7; c++)
                 {
-                    gameBoard[r, c].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
+                    gameBoard[r, c].BackColor = Color.FromName(startingConfigArray[startingConfigindex]); //asignes a colour from the list into the picture box
                     startingConfigindex++;
 
                 }
             }
 
-        } //?? can i make a subprogram that checks for a picturebox being pressed? like "private void pb + index" type thing
+        }
         private void MovePlus(object sender, EventArgs e, string colour, string move)
         {
             //loops thorugh gameboard checking all picture boxes one at a time from top left to bottom right
-            for (int r = 0; r < 7; r++) //Rows
+            for (int r = 0; r < 6; r++) //Rows
             {
-                for (int c = 0; c < 7; c++) //Coloums
+                for (int c = 0; c < 6; c++) //Coloums
                 {
                     if (move == "Up" && r > 0)
                     {
                         if (moveLock == false)
                            {
-                            //checks the selected square and checks if it matches the selected colour
+                            //checks if the colour selected is Green and the current square is Green. this is needed as green has diffrent movment rules
                             if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
                                 //checks if the squares it will move into are blank
-                                if (gameBoard[r - 1, c].BackColor == Color.White && gameBoard[r - 1, c - 1].BackColor == Color.White && gameBoard[r + 1, c + 1].BackColor == Color.White) // how do i check both blocks above green to not split it?
+                                if (gameBoard[r - 1, c].BackColor == Color.White && gameBoard[r - 1, c + 1].BackColor == Color.White && gameBoard[r, c - 1].BackColor != Color.Green)
                                 {
                                     gameBoard[r - 1, c].BackColor = Color.Green;
                                     gameBoard[r, c].BackColor = Color.White;
+                                    gameBoard[r - 1, c + 1].BackColor = Color.Green;
+                                    gameBoard[r, c + 1].BackColor = Color.White;
                                 }
                             }
                             //if the colour is not green it will run this. this section is needed as green has diffrent movment rules
@@ -86,32 +88,28 @@ namespace Grid_Lock___Option_3 // Green #008000
                                     //makes sure the square it will move into is blank
                                     if (gameBoard[r - 1, c].BackColor == Color.White)
                                     {
-                                        //makes sure the 
-                                        if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
+                                        if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]")
                                         {
                                             gameBoard[r, c].BackColor = Color.White; // sets the square to blank
                                             gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
                                         }
-
                                     }
                                 }
                             }
                         }
-                        else if (Convert.ToString(gameBoard[3, 6].BackColor) == "Green")
-                        {
-                            MessageBox.Show("Test");
-                        }
                     }
                     if (move == "Left" && c > 0)
                     {
-                        if (r != 6 && c != 2 || r != 7 && c != 3)
+                        if (moveLock == false)
                         {
                             if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
-                                if (gameBoard[r, c - 1].BackColor == Color.White && gameBoard[r - 1, c - 1].BackColor == Color.White)
+                                if (gameBoard[r, c + 1].BackColor == Color.White && gameBoard[r + 1, c - 1].BackColor == Color.White && gameBoard[r, c - 1].BackColor != Color.Green)
                                 {
-                                    gameBoard[r, c].BackColor = Color.White;
                                     gameBoard[r, c - 1].BackColor = Color.Green;
+                                    gameBoard[r, c].BackColor = Color.White;
+                                    gameBoard[r + 1 , c - 1].BackColor = Color.Green;
+                                    gameBoard[r + 1, c].BackColor = Color.White;
                                 }
                             }
                             else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
@@ -120,25 +118,21 @@ namespace Grid_Lock___Option_3 // Green #008000
                                 {
                                     if (gameBoard[r, c - 1].BackColor == Color.White)
                                     {
-                                        if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                        if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]")
                                         {
                                             gameBoard[r, c].BackColor = Color.White;
                                             gameBoard[r, c - 1].BackColor = Color.FromName(colour);
                                         }
+                                        //if (Convert.ToString(gameBoard[r - 2, c].BackColor) == )
                                     }
                                 }
                             }
-                        }
-                        else if (r == 6 && c == 2 && r + 1 == 7 && c == 3)
-                        {
-                            MessageBox.Show("Test");
                         }
                     }
 
                 }
             }
         }
-        //deals with Right and Down movment. Scans from bottom left to top right to avoid the blocks riding the checker
         private void MoveMinus(object sender, EventArgs e, string colour, string move)
         {
             //loops thorugh gameboard checking all pictireboxes one at a time
@@ -146,77 +140,72 @@ namespace Grid_Lock___Option_3 // Green #008000
             {
                 for (int c = 6; c >= 0; c--) //Coloums
                 {
-                    if (Color.FromName(cbColour.Text) == Color.Green)
+                    if (move == "Right" && c <= 5)
                     {
-                        if (move == "Right" && c <= 6)
+                        if (moveLock == false)
                         {
-                            if (Convert.ToString(gameBoard[2, 5].BackColor) != "Green" && Convert.ToString(gameBoard[3, 5].BackColor) != "Green")
+                            if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
-                                if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
+                                if (gameBoard[r, c + 1].BackColor == Color.White && gameBoard[r - 1, c + 1].BackColor == Color.White && gameBoard[r + 1, c].BackColor != Color.Green)
+                                {
+                                    gameBoard[r, c + 1].BackColor = Color.Green;
+                                    gameBoard[r, c ].BackColor = Color.White;
+                                    gameBoard[r - 1, c + 1].BackColor = Color.Green;
+                                    gameBoard[r - 1, c].BackColor = Color.White;
+                                }
+                            }
+                            else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
+                            {
+                                if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
                                 {
                                     if (gameBoard[r, c + 1].BackColor == Color.White)
                                     {
-                                        gameBoard[r, c].BackColor = Color.White;
-                                        gameBoard[r, c + 1].BackColor = Color.Green;
-                                    }
-                                }
-                                else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
-                                {
-                                    if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
-                                    {
-                                        if (gameBoard[r, c + 1].BackColor == Color.White)
+                                        if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]")
                                         {
-                                            if (Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r - 1, c].BackColor) != "Color " + "[" + colour + "]")
-                                            {
-                                                gameBoard[r, c].BackColor = Color.White;
-                                                gameBoard[r, c + 1].BackColor = Color.FromName(colour);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        if (move == "Down")
-                        {
-                            if (r <= 6)
-                            {
-                                for (int i = 0; i < 4; i++)
-                                {
-                                    //Makes sure the square that colour will move into is blank
-                                    if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
-                                    {
-                                        if (gameBoard[r + 1, c].BackColor == Color.White)
-                                        {
-                                            gameBoard[r + 1, c].BackColor = Color.FromName(colour);
                                             gameBoard[r, c].BackColor = Color.White;
-
-                                        }
-                                    }
-                                    else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green" && colour != "Green")
-                                    {
-                                        if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
-                                        {
-                                            if (gameBoard[r + 1, c].BackColor == Color.White)
-                                            {
-                                                if (Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]")
-                                                {
-                                                    gameBoard[r, c].BackColor = Color.White;
-                                                    gameBoard[r + 1, c].BackColor = Color.FromName(colour);
-                                                }
-                                            }
+                                            gameBoard[r, c + 1].BackColor = Color.FromName(colour);
                                         }
                                     }
                                 }
-
                             }
                         }
+                    }
+                    if (move == "Down" && r <= 5)
+                    {
+                        if (moveLock == false)
+                        {
+                            if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
+                            {
+                                if (gameBoard[r + 1, c].BackColor == Color.White && gameBoard[r + 1, c + 1].BackColor == Color.White && gameBoard[r, c - 1].BackColor != Color.Green)
+                                {
+                                    gameBoard[r + 1, c].BackColor = Color.Green;
+                                    gameBoard[r, c].BackColor = Color.White;
+                                    gameBoard[r + 1, c + 1].BackColor = Color.Green;
+                                    gameBoard[r, c + 1].BackColor = Color.White;
 
+                                }
+                            }
+                            else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green" && colour != "Green")
+                            {
+                                if (Convert.ToString(gameBoard[r, c].BackColor) == "Color " + "[" + colour + "]")
+                                {
+                                    if (gameBoard[r + 1, c].BackColor == Color.White)
+                                    {
+                                        if (Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r + 1, c].BackColor) != "Color " + "[" + colour + "]")
+                                        {
+                                            gameBoard[r, c].BackColor = Color.White;
+                                            gameBoard[r + 1, c].BackColor = Color.FromName(colour);
+                                        }
+                                    }
+                                }
+                            }
 
+                        }
                     }
                 }
             }
         }
-        private void btnUp_Click(object sender, EventArgs e) //?? how can i use keys to do this? pressing any key automaticaly selects and uses the cb and does not read the input to use. tryed the function recomended but only selected objects on screen
+        private void btnUp_Click(object sender, EventArgs e) 
         {
             string colour = cbColour.Text;
             string move = "Up";
@@ -262,7 +251,7 @@ namespace Grid_Lock___Option_3 // Green #008000
                 moveLock = true;
                 MessageBox.Show("Congrats, you won! you completed the level in " + min + " minutes, " + sec + " secconds and " + msec + " milisecconds. Close this window to progress to the next level");
                 string lvlComplete = "true";
-                btnLevel_Click(this, e, lvlComplete);
+                btnLevelChange_Click(this, e, lvlComplete);
             }
         }
         private void btnBegin_Click(object sender, EventArgs e)
@@ -273,7 +262,7 @@ namespace Grid_Lock___Option_3 // Green #008000
             stopwatch.Visible = true;
             btnBegin.Visible = false;
             moveLock = false;
-        } //?? only happy if all thigns sending to it send the same values, is there a way around this iwthout using global variables? // not nessesary but would like to know
+        }
         private void btnDarkSwitch_Click(object sender, EventArgs e)
         {
             if (btnDarkSwitch.Text == "Dark Mode")
@@ -287,6 +276,9 @@ namespace Grid_Lock___Option_3 // Green #008000
                 btnBegin.BackColor = SystemColors.Control;
                 btnDarkSwitch.ForeColor = SystemColors.ControlText;
                 btnDarkSwitch.BackColor = SystemColors.Control;
+                lblBottomInd.ForeColor = SystemColors.ControlText;
+                lblTopind.ForeColor = SystemColors.ControlText;
+                lblCenter.ForeColor = SystemColors.ControlText;
             }
             else if (btnDarkSwitch.Text == "Light Mode")
             {
@@ -299,65 +291,69 @@ namespace Grid_Lock___Option_3 // Green #008000
                 btnBegin.BackColor = Color.FromArgb(40, 40, 40);
                 btnDarkSwitch.BackColor = SystemColors.ControlText;
                 btnDarkSwitch.ForeColor = SystemColors.Control;
+                lblBottomInd.ForeColor= SystemColors.Control;
+                lblBottomInd.ForeColor = SystemColors.Control;
+                lblTopind.ForeColor = SystemColors.Control;
+                lblCenter.ForeColor = SystemColors.Control;
             }
         }
 
-        private void btnLevel_Click(object sender, EventArgs e, string lvlComplete)
+        private void btnLevelChange_Click(object sender, EventArgs e, string lvlComplete)
         {
-            if (btnLevel.Text == "Level 1")
+            if (btnLevelChange.Text == "Level 1")
             {
                 if (lvlComplete == "true")
                 {
-                List<string> startingConfigArray = new List<string>();
-                StreamReader reader = new StreamReader(@"level_2.csv");
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    startingConfigArray.Add(line);
-                }
-
-                int startingConfigindex = 0;
-                gameBoard[0, 0].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
-                startingConfigindex++;
-                for (int r = 0; r < 7; r++)
-                {
-                    for (int c = 0; c < 7; c++)
+                    List<string> startingConfigArray = new List<string>();
+                    StreamReader reader = new StreamReader(@"level_2.csv");
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        gameBoard[r, c].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
-                        startingConfigindex++;
-
+                        startingConfigArray.Add(line);
                     }
-                }
-                btnLevel.Text = "Level 2";
-                btnBegin.Visible = true;
+
+                    int startingConfigindex = 0;
+                    gameBoard[0, 0].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
+                    startingConfigindex++;
+                    for (int r = 0; r < 7; r++)
+                    {
+                        for (int c = 0; c < 7; c++)
+                        {
+                            gameBoard[r, c].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
+                            startingConfigindex++;
+
+                        }
+                    }
+                    btnLevelChange.Text = "Level 2";
+                    btnBegin.Visible = true;
                 }
 
             }
-            else if (btnLevel.Text == "Level 2" || lvlComplete == "true")
+            else if (btnLevelChange.Text == "Level 2" || lvlComplete == "true")
             {
                 if (lvlComplete == "true")
                 {
-                List<string> startingConfigArray = new List<string>();
-                StreamReader reader = new StreamReader(@"StartingConfig.csv");
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    startingConfigArray.Add(line);
-                }
-
-                int startingConfigindex = 0;
-                gameBoard[0, 0].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
-                startingConfigindex++;
-                for (int r = 0; r < 7; r++)
-                {
-                    for (int c = 0; c < 7; c++)
+                    List<string> startingConfigArray = new List<string>();
+                    StreamReader reader = new StreamReader(@"StartingConfig.csv");
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        gameBoard[r, c].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
-                        startingConfigindex++;
+                        startingConfigArray.Add(line);
                     }
-                }
-                btnLevel.Text = "Level 1"; // change if lvl 3 is added
-                btnBegin.Visible = true;
+
+                    int startingConfigindex = 0;
+                    gameBoard[0, 0].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
+                    startingConfigindex++;
+                    for (int r = 0; r < 7; r++)
+                    {
+                        for (int c = 0; c < 7; c++)
+                        {
+                            gameBoard[r, c].BackColor = Color.FromName(startingConfigArray[startingConfigindex]);
+                            startingConfigindex++;
+                        }
+                    }
+                    btnLevelChange.Text = "Level 1"; // change if lvl 3 is added
+                    btnBegin.Visible = true;
                 }
 
             }
