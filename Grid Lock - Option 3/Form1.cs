@@ -22,10 +22,10 @@ namespace Grid_Lock___Option_3 // Green #008000
         public int sec;
         public int min;
         public bool moveLock = false;
-        public bool lvlComplete = true; // 
+        public bool lvlComplete = true;
         private void Form1_Load(object sender, EventArgs e)
         {
-            stopwatch.Visible = false;
+           stopwatch.Visible = false;
             int index = 1; //changes what picturebox is selected
             for (int i = 0; i < 7; i++)
             {
@@ -124,7 +124,7 @@ namespace Grid_Lock___Option_3 // Green #008000
                         {
                             if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
-                                if (gameBoard[r, c + 1].BackColor == Color.White && gameBoard[r + 1, c - 1].BackColor == Color.White && gameBoard[r, c - 1].BackColor != Color.Green)
+                                if (gameBoard[r, c - 1].BackColor == Color.White && gameBoard[r + 1, c - 1].BackColor == Color.White && gameBoard[r + 1, c].BackColor != Color.Green)
                                 {
                                     gameBoard[r, c - 1].BackColor = Color.Green;
                                     gameBoard[r, c].BackColor = Color.White;
@@ -326,6 +326,7 @@ namespace Grid_Lock___Option_3 // Green #008000
                 lblBottomInd.ForeColor = SystemColors.ControlText;
                 lblTopind.ForeColor = SystemColors.ControlText;
                 lblCenter.ForeColor = SystemColors.ControlText;
+                stopwatch.ForeColor = SystemColors.ControlText;
             }
             else if (btnDarkSwitch.Text == "Light Mode")
             {
@@ -342,10 +343,13 @@ namespace Grid_Lock___Option_3 // Green #008000
                 lblBottomInd.ForeColor = SystemColors.Control;
                 lblTopind.ForeColor = SystemColors.Control;
                 lblCenter.ForeColor = SystemColors.Control;
+                stopwatch.ForeColor = SystemColors.Control;
             }
         }
         private void btnLevelChange_Click(object sender, EventArgs e)
         {
+          
+
             if (btnLevelChange.Text == "Level 1")
             {
                 if (lvlComplete == true)
@@ -372,11 +376,13 @@ namespace Grid_Lock___Option_3 // Green #008000
                     }
                     btnLevelChange.Text = "Level 2";
                     btnBegin.Visible = true;
+                    stopwatch.Visible = false;
                 }
 
             }
             else if (btnLevelChange.Text == "Level 2")
             {
+                
                 if (lvlComplete == true)
                 {
                     List<string> startingConfigArray = new List<string>();
@@ -400,6 +406,7 @@ namespace Grid_Lock___Option_3 // Green #008000
                     }
                     btnLevelChange.Text = "Level 1"; // change if lvl 3 is added
                     btnBegin.Visible = true;
+                    stopwatch.Visible = false;
                 }
 
             }
@@ -407,6 +414,8 @@ namespace Grid_Lock___Option_3 // Green #008000
             sec = 0;
             min = 0;
         }
+
+       
     }
 }
 
