@@ -107,7 +107,7 @@ namespace Grid_Lock___Option_3 // Green #008000
                                         }
                                         else if (c > 0 && c < 6)
                                         {
-                                            if (Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]" || Convert.ToString(gameBoard[r, c - 1].BackColor) == "Color " + "[" + colour + "]")
+                                            if (Convert.ToString(gameBoard[r, c - 1].BackColor) != "Color " + "[" + colour + "]" && Convert.ToString(gameBoard[r, c + 1].BackColor) != "Color " + "[" + colour + "]")
                                             {
                                                 gameBoard[r, c].BackColor = Color.White; // sets the square to blank
                                                 gameBoard[r - 1, c].BackColor = Color.FromName(colour); //sets the square ahead the new colour
@@ -124,12 +124,12 @@ namespace Grid_Lock___Option_3 // Green #008000
                         {
                             if (gameBoard[r, c].BackColor == Color.Green && colour == "Green")
                             {
-                                if (gameBoard[r, c - 1].BackColor == Color.White && gameBoard[r + 1, c - 1].BackColor == Color.White && gameBoard[r + 1, c].BackColor != Color.Green)
+                                if (gameBoard[r, c + 1].BackColor == Color.White && gameBoard[r - 1, c + 1].BackColor == Color.White && gameBoard[r + 1, c].BackColor != Color.Green)
                                 {
-                                    gameBoard[r, c - 1].BackColor = Color.Green;
+                                    gameBoard[r, c + 1].BackColor = Color.Green;
                                     gameBoard[r, c].BackColor = Color.White;
-                                    gameBoard[r + 1 , c - 1].BackColor = Color.Green;
-                                    gameBoard[r + 1, c].BackColor = Color.White;
+                                    gameBoard[r - 1, c + 1].BackColor = Color.Green;
+                                    gameBoard[r - 1, c].BackColor = Color.White;
                                 }
                             }
                             else if (gameBoard[r, c].BackColor != Color.Green && colour != "Green")
